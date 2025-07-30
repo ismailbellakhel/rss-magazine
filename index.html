@@ -1,36 +1,53 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Perfect Weekend</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* inline magazine CSS */
+    body{margin:0;font-family:Georgia,serif;background:#f4f0ec;color:#222}
+    header{background:#eee0d4;padding:1.5rem;border-bottom:4px solid #111;text-align:center;font-size:2.2rem;letter-spacing:1px}
+    .container{display:grid;gap:2rem;padding:2rem;max-width:1400px;margin:auto;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+    .feature-center{grid-column:span 2}
+    .card{background:#fff;overflow:hidden;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;flex-direction:column}
+    .card img{width:100%;display:block}
+    .card h2{margin:1rem;font-size:1.2rem;color:#333}
+    .card p{margin:0 1rem 1rem;line-height:1.4;color:#555}
+    a{text-decoration:none;color:#00427e}
+    a:hover{text-decoration:underline}
+    @media(max-width:768px){.feature-center{grid-column:span 1}}
+  </style>
 </head>
 <body>
   <header>PERFECT WEEKEND</header>
   <main class="container">
     
-    <article class="">
+    <article class="card">
+      <a href="https://www.dagensps.se/weekend/spanien-gor-storstadning-pa-airbnb-tiotusentals-annonser-borta/" target="_blank">
+        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="Spanien gör storstädning på Airbnb – tiotusentals annonser borta">
+        <h2>Spanien gör storstädning på Airbnb – tiotusentals annonser borta</h2>
+      </a>
+      <p>Spanien skärper tonen mot korttidsuthyrningar. Tiotusentals annonser på Airbnb har redan försvunnit – och fler kan snart ryka. Spaniens regering trappar nu upp insatsen mot olagliga uthyrningar. Airbn…</p>
+    </article>
+  
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/sa-smakar-sverige-enligt-svenskarna/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlR446SjhacZk-nh-1024x512.jpg" alt="Så smakar Sverige, enligt svenskarna">
         <h2>Så smakar Sverige, enligt svenskarna</h2>
       </a>
-      <p>Hur det ser ut har vi väl koll på, men hur smakar och doftar egentligen Sverige? Nu har Ica kartlagt det och låtit svenskarna uttala sig.
-Denna sommar, som rullar på för fullt, berättar Ica att man ka…</p>
+      <p>Hur det ser ut har vi väl koll på, men hur smakar och doftar egentligen Sverige? Nu har Ica kartlagt det och låtit svenskarna uttala sig. Denna sommar, som rullar på för fullt, berättar Ica att man ka…</p>
     </article>
   
-
-    <article class="">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/sa-paverkar-kaffe-ditt-blodsocker-varje-dag/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlREqFE4NWTPU-nh-1024x512.jpg" alt="Så påverkar kaffe ditt blodsocker varje dag">
         <h2>Så påverkar kaffe ditt blodsocker varje dag</h2>
       </a>
-      <p>Kaffe är svenskarnas favorit under fikapausen och arbetsdagarna rinner det ner tolv miljoner koppar. Men vad händer med blodsockret?
-Svenskarna dricker näst mest kaffe per person i världen och drycken…</p>
+      <p>Kaffe är svenskarnas favorit under fikapausen och arbetsdagarna rinner det ner tolv miljoner koppar. Men vad händer med blodsockret? Svenskarna dricker näst mest kaffe per person i världen och drycken…</p>
     </article>
   
-
-    <article class="">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/resor/sa-lurar-resenarer-flygbolagen-med-falska-annonser/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2022/11/flyg1-1024x576.jpg" alt="Så lurar resenärer flygbolagen – med falska annonser…">
         <h2>Så lurar resenärer flygbolagen – med falska annonser…</h2>
@@ -38,8 +55,7 @@ Svenskarna dricker näst mest kaffe per person i världen och drycken…</p>
       <p>När handbagaget kostar mer än flygbiljetten tar desperationen över. Då kommer kreativiteten mot flygbolagen fram. Nu använder resenärer en klädsajt som bagageförmedling – och det fungerar förvånansvär…</p>
     </article>
   
-
-    <article class="">
+    <article class="card feature-center">
       <a href="https://www.dagensps.se/weekend/resor/resenarens-hamnd-pa-lagprisbolaget-blev-viral-hjalte/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/aI4u7lPt-Namnlos-design-2-1024x512.png" alt="Resenärens hämnd på lågprisbolaget – blev viral hjälte">
         <h2>Resenärens hämnd på lågprisbolaget – blev viral hjälte</h2>
@@ -47,39 +63,31 @@ Svenskarna dricker näst mest kaffe per person i världen och drycken…</p>
       <p>När lågprisbolaget ville ta extra betalt för en väska som påstods vara för stor, vägrade Arina att vika sig. Med brutal precision och mycket kraft blev hon en TikTok-stjärna på kuppen. Perfect Weekend…</p>
     </article>
   
-
-    <article class="feature-center">
+    <article class="card feature-center">
       <a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg" alt="Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång">
         <h2>Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång</h2>
       </a>
-      <p>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång.
-En ny jättestudie visar att det går att sakta ner den kognitiv…</p>
+      <p>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång. En ny jättestudie visar att det går att sakta ner den kognitiv…</p>
     </article>
   
-
-    <article class="feature-center">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/noje-underhallning/hollywood-nej-tack-vi-flyger-till-irland-i-stallet/" target="_blank">
         <img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F1-161.png&#038;w=1200&#038;q=75" alt="“Hollywood? Nej tack. Vi flyger till Irland i stället”">
         <h2>“Hollywood? Nej tack. Vi flyger till Irland i stället”</h2>
       </a>
-      <p>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland.
-När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett…</p>
+      <p>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland. När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett…</p>
     </article>
   
-
-    <article class="">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/resor/hejda-till-100-millilitersregeln-i-din-sakerhetskontroll/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png" alt="Snart får du ta med två liter vätska i handbagaget">
         <h2>Snart får du ta med två liter vätska i handbagaget</h2>
       </a>
-      <p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan.
-Framtiden är här – åtminstone i Roms säkerhetskontroll
-De…</p>
+      <p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan. Framtiden är här – åtminstone i Roms säkerhetskontroll De…</p>
     </article>
   
-
-    <article class="">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/resor/europas-basta-all-inclusive-hotell-2025/" target="_blank">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/Stella-Island-Resort-Spa-2-1024x512.png" alt="10 all inclusive-hotell som faktiskt är snygga nog för Instagram">
         <h2>10 all inclusive-hotell som faktiskt är snygga nog för Instagram</h2>
@@ -87,23 +95,12 @@ De…</p>
       <p>Det finns något befriande i att checka in på ett riktigt bra all inclusive-hotell i Europa och veta att precis allt är ordnat – från champagnefrukost i poolen till glass till frukost (ja, faktiskt). P…</p>
     </article>
   
-
-    <article class="">
+    <article class="card">
       <a href="https://www.dagensps.se/weekend/noje-underhallning/south-park-grundarna-nu-dollarmiljardarer-attackerar-trump/" target="_blank">
         <img src="https://via.placeholder.com/800x500?text=No+Image" alt="“South Park”-grundarna nu dollarmiljardärer – attackerar Trump">
         <h2>“South Park”-grundarna nu dollarmiljardärer – attackerar Trump</h2>
       </a>
-      <p>Ny säsong av “South Park” med ett lukrativt avtal. Då riktades satiren direkt mot president Donald Trump, och det egna ägarbolaget.
-Turerna kring när Skydance Media köpte upp Paramount avslutades unde…</p>
-    </article>
-  
-
-    <article class="">
-      <a href="https://www.dagensps.se/weekend/resor/fem-kvinnor-stammer-qatar-airways-tvingande-underlivsundersokningar/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/02/sdl58nDpNbtBOw-nh-1024x512.jpg" alt="Fem kvinnor stämmer Qatar Airways – tvingande underlivsundersökningar">
-        <h2>Fem kvinnor stämmer Qatar Airways – tvingande underlivsundersökningar</h2>
-      </a>
-      <p>Fem australiska kvinnor drogs av planet i Doha och tvingades till gynekologiska undersökningar – mitt på flygplatsens landningsbana. Nu, fem år senare, har de fått rätt att stämma Qatar Airways. Falle…</p>
+      <p>Ny säsong av “South Park” med ett lukrativt avtal. Då riktades satiren direkt mot president Donald Trump, och det egna ägarbolaget. Turerna kring när Skydance Media köpte upp Paramount avslutades unde…</p>
     </article>
   
   </main>
