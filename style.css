@@ -1,0 +1,14 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+h1 {
+  text-align: center;
+}
+
+.article {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
