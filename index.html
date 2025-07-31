@@ -4,95 +4,448 @@
   <meta charset="UTF-8">
   <title>Perfect Weekend Magazine</title>
   <style>
-    /* reset & variables */
-    * { box-sizing:border-box; margin:0; padding:0 }
-    :root {
-      --bg:#faf5f0; --frame:#e8d7cd;
-      --accent:#bd1e2d; --text:#222; --muted:#555;
-      --gap:1rem; --font:Georgia,serif;
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#faf5f0;--frame:#e8d7cd;
+      --accent:#bd1e2d;--text:#222;--muted:#555;
+      --gap:1rem;--font:Georgia,serif;
     }
-    body { background:var(--frame); font-family:var(--font); color:var(--text) }
-    a { color:var(--accent); text-decoration:none }
-    header { background:var(--accent); color:#fff; text-align:center; padding:1rem 0 }
-    header h1 { font-size:2.5rem; letter-spacing:.1em }
-
-    main {
-      max-width:1200px; margin:var(--gap) auto;
-      background:var(--bg); padding:var(--gap);
-      border:1px solid var(--muted);
-    }
-    .top-grid {
-      display:grid;
-      grid-template-columns:2fr 1fr;
-      grid-template-rows:auto auto;
-      gap:var(--gap);
-    }
-    .hero {
-      grid-column:1; grid-row:1/3;
-    }
-    .hero img { width:100%; display:block; margin-bottom:.5rem }
-    .feature, .hero { background:#fff; padding:var(--gap); border:1px solid var(--muted) }
-    .feature img { width:100%; display:block; margin-bottom:.5rem }
-    .feature h2, .hero h2 { margin-bottom:.5rem; font-size:1.3rem }
-    .meta { font-size:.85rem; color:var(--muted); margin-bottom:.75rem }
-
-    aside.sidebar {
-      grid-column:2; grid-row:1/3;
-      background:#fff; padding:var(--gap); border:1px solid var(--muted);
-    }
-    .sidebar ul { list-style:none }
-    .sidebar li { margin-bottom:.75rem }
-    .sidebar li a { font-weight:bold }
-
-    .bottom-grid {
-      margin-top:var(--gap);
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:var(--gap);
-    }
-    .tile {
-      background:#fff; padding:var(--gap); border:1px solid var(--muted);
-    }
-    .tile img { width:100%; display:block; margin-bottom:.5rem }
-    .tile h3 { font-size:1.1rem; margin-bottom:.5rem }
-    .tile .meta { font-size:.8rem; color:var(--muted); margin-bottom:.5rem }
-    .tile p { line-height:1.4; font-size:.95rem }
-
-    @media(max-width:800px) {
-      .top-grid { grid-template-columns:1fr; grid-template-rows:auto auto auto }
-      .hero, .feature, .sidebar { grid-column:auto; grid-row:auto }
-      .bottom-grid { grid-template-columns:1fr }
+    body{background:var(--frame);font-family:var(--font);color:var(--text)}
+    a{color:var(--accent);text-decoration:none}
+    header{background:var(--accent);color:#fff;text-align:center;padding:1rem 0}
+    header h1{font-size:2.5rem;letter-spacing:.1em}
+    main{max-width:1200px;margin:var(--gap) auto;background:var(--bg);padding:var(--gap);border:1px solid var(--muted)}
+    .top-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:var(--gap)}
+    .hero{grid-column:1;grid-row:1/3}
+    .feature{background:#fff;padding:var(--gap);border:1px solid var(--muted)}
+    .hero img, .feature img{width:100%;display:block;margin-bottom:.5rem}
+    .hero h2, .feature h2{margin-bottom:.5rem;font-size:1.3rem}
+    .meta{font-size:.85rem;color:var(--muted);margin-bottom:.75rem}
+    aside.sidebar{grid-column:2;grid-row:1/3;background:#fff;padding:var(--gap);border:1px solid var(--muted)}
+    .sidebar ul{list-style:none}
+    .sidebar li{margin-bottom:.75rem}
+    .sidebar li a{font-weight:bold}
+    .bottom-grid{margin-top:var(--gap);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+    .tile{background:#fff;padding:var(--gap);border:1px solid var(--muted)}
+    .tile img{width:100%;display:block;margin-bottom:.5rem}
+    .tile h3{font-size:1.1rem;margin-bottom:.5rem}
+    .tile .meta{font-size:.8rem;color:var(--muted);margin-bottom:.5rem}
+    .tile .body{line-height:1.4;font-size:.95rem}
+    @media(max-width:800px){
+      .top-grid{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+      .bottom-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Perfect Weekend</h1>
-  </header>
+  <header><h1>Perfect Weekend</h1></header>
   <main>
+
+    <!-- TOP GRID -->
     <div class="top-grid">
+
       <!-- HERO (item 1) -->
       <div class="hero">
         <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-1024x512.png" alt="">
         <h2><a href="https://www.dagensps.se/weekend/halsa/var-hjarna-krymper-och-det-ar-inte-pa-skoj/">Vår hjärna krymper och det är inte på skoj</a></h2>
         <div class="meta">Thu, 31 Jul 2025 06:14:36 +0000</div>
-        <p>Forskare varnar: intelligensen minskar i västvärlden. Och det är inte TikToks fel. Eller ja… kanske lite. Perfect Weekend tar hjälp av Sveriges mest hjärnstarka psykiater för att förstå varför vi blir dummare – och vad som är den första varningsflaggan. Från stegräknare till intellektuell kris Det började som ett framgångssaga. Under hela 1900-talet blev varje […]</p>
+        <div class="body">
+<p>Forskare varnar: intelligensen minskar i västvärlden. Och det är inte TikToks fel. Eller ja… kanske lite. Perfect Weekend tar hjälp av Sveriges mest hjärnstarka psykiater för att förstå varför vi blir dummare – och vad som är den första varningsflaggan.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fran-stegraknare-till-intellektuell-kris">Från stegräknare till intellektuell kris</h2>
+
+
+
+<p>Det började som ett framgångssaga. Under hela 1900-talet blev varje generation smartare än den förra. IQ-nivån ökade. Samhället moderniserades. Och forskarna log nöjt över något som kallades Flynn-effekten.</p>
+
+
+
+<p>Men så kom vändningen. I början av 1990-talet började IQ-nivåerna i flera västländer sjunka. Inga dramatiska ras – men en tydlig trend. Och det var inte bara bland de yngre.</p>
+
+
+
+<p>&#8220;Det här är första gången i historien vi ser att intelligensen sjunker&#8221; <a href="https://www.svd.se/a/8qyzB1/anders-hansen-om-var-sjunkande-intelligens-forsta-varningsflagga?utm_source=androidapp&amp;utm_medium=share">skriver Anders Hansen i SvD.</a> Han är överläkare i psykiatri, men också något av en svensk hjärn-celebritet med böcker, sommarprat och fler scenminuter än vissa ståuppare.</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-1024x512.png" alt="" class="wp-image-1545952" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Så här glad blir frontalloben av en promenad utan mobil. (Foto: Canva)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-arbetshjarnan-sager-upp-sig">Arbetshjärnan säger upp sig</h2>
+
+
+
+<p>För Hansen är det tydligt. Det första som ryker när vi går från Homo sapiens till Homo scrolliens är arbetsminnet.</p>
+
+
+
+<p>Arbetsminnet är hjärnans post-it-lapp. Den plats där vi tillfälligt lagrar och bearbetar information. Den du använder när du läser en text, gör en huvudräkning eller försöker komma ihåg varför du gick in i ett rum.</p>
+
+
+
+<p>När arbetsminnet försämras blir det svårare att fokusera. Svårare att tänka längre tankar. Svårare att komma ihåg varför du skulle skriva det där mejlet.</p>
+
+
+
+<p>Enligt Hansen är det en tydlig varningssignal. Och kanske början på en större kognitiv nedgång.</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/">Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång</a> </p>
+
+
+
+<h2 class="wp-block-heading" id="h-hjalten-i-dramat-naturen">Hjälten i dramat: naturen</h2>
+
+
+
+<p>Men varför händer detta just nu? Vad är det som gör att vi, trots bättre utbildning, näringsrikare mat och fler smarta prylar, faktiskt verkar bli… dummare?</p>
+
+
+
+<p>För Hansen finns tre stora misstänkta:</p>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Vi rör oss för lite.</strong> Den mänskliga hjärnan är evolutionärt kopplad till rörelse. När kroppen är stilla blir hjärnan trött.</li>
+
+
+
+<li><strong>Vi distraheras konstant.</strong> Skärmar, appar, flöden, notiser. Vår hjärna är inte byggd för att hantera tusen mikrostimuli per timme.</li>
+
+
+
+<li><strong>Vi får för lite natur.</strong> Grönt ljus, fågelsång och barrdoft är inte bara mysigt – det är neurokemiskt läkande.</li>
+</ol>
+
+
+
+<p>&#8220;Vi lever i en miljö hjärnan inte är anpassad för&#8221; skriver Hansen i SvD. Han föreslår mer skog och färre skärmar.</p>
+
+
+
+<p>Och ja – han är skeptisk även till AI-verktyg som ChatGPT. Hansen menar att de gör det lätt att hoppa över det kognitivt ansträngande tänkandet, vilket på sikt riskerar att göra oss mentalt lata. Vi låter hjärnan vila – när den egentligen borde jobba.</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-179-1024x512.png" alt="" class="wp-image-1545953" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-179-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-179-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-179-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-179.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">När du multitaskar och tror att du är smart – men hjärnan går på lågvarv. (Foto: Canva)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-sa-blir-du-hjarnsmart-igen">Så blir du hjärnsmart igen</h2>
+
+
+
+<p>Nej, det är inte kört. Hansen är ingen domedagsprofet. Han tror på hjärnans återhämtning. Men det kräver en livsstilsförändring.</p>
+
+
+
+<p>Stäng av mobilen ibland. Ta promenader. Läs en bok. Sov ordentligt. Umgås i verkligheten.</p>
+
+
+
+<p>Och framför allt: skaffa nya rutiner där hjärnan får göra det den gillar bäst – tänka klart.</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/sa-paverkar-kaffe-ditt-blodsocker-varje-dag/">Så påverkar kaffe ditt blodsocker varje dag</a></p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-165-1024x512.png" alt="" class="wp-image-1545950" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-165-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-165-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-165-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-165.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Hjärnscan under skogsbad: lugn som en yogainstruktör. (Foto: Canva)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-perfect-weekend-guide-sa-tranar-du-hjarnan">Perfect Weekend Guide: Så tränar du hjärnan</h2>
+
+
+
+<p><strong>1. Gå 10 000 steg om dagen</strong><br>Kropp i rörelse = hjärna i toppform.</p>
+
+
+
+<p><strong>2. Lägg mobilen i ett annat rum</strong><br>Du behöver inte veta allt hela tiden.</p>
+
+
+
+<p><strong>3. Läs långsamt och med papper</strong><br>Hjärnan älskar berättelser – inte pushnotiser.</p>
+
+
+
+<p><strong>4. Ät som om du bryr dig</strong><br>Fet fisk, blåbär, nötter. Kanske broccoli.</p>
+
+
+
+<p><strong>5. Sov gott och utan skärm</strong><br>Ljus stör sömnen. Sömnen bygger hjärnan.</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/vattenmelon-varje-dag-har-ar-riskerna-du-bor-kanna-till/">Vattenmelon varje dag? Här är riskerna du bör känna till</a></p>
+</div>
       </div>
-      <!-- FEATURE 2 -->
-      <div class="feature">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg" alt="">
-        <h2><a href="https://www.dagensps.se/weekend/vattenmelon-varje-dag-har-ar-riskerna-du-bor-kanna-till/">Vattenmelon varje dag? Här är riskerna du bör känna till</a></h2>
-        <div class="meta">Wed, 30 Jul 2025 17:52:05 +0000</div>
-        <p>Vattenmelon är svalkande och nyttigt men att äta den varje dag kan få oväntade konsekvenser för din hälsa. Här är riskerna du bör känna till. Vattenmelon är för många en självklar sommarfavorit. Men att äta frukten varje dag kan leda till oväntade biverkningar, enligt hälsosajter och dietister, som varnar för allt från magproblem till näringsobalanser. […]</p>
-      </div>
-      <!-- FEATURE 3 -->
-      <div class="feature">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="">
-        <h2><a href="https://www.dagensps.se/weekend/spanien-gor-storstadning-pa-airbnb-tiotusentals-annonser-borta/">Spanien gör storstädning på Airbnb – tiotusentals annonser borta</a></h2>
-        <div class="meta">Wed, 30 Jul 2025 15:07:36 +0000</div>
-        <p>Spanien skärper tonen mot korttidsuthyrningar. Tiotusentals annonser på Airbnb har redan försvunnit – och fler kan snart ryka. Spaniens regering trappar nu upp insatsen mot olagliga uthyrningar. Airbnb granskas hårdare än någonsin när myndigheterna försöker återta kontrollen över bostadsmarknaden. Missa inte: Forskare upptäcker plötsligt skifte – då accelererar åldrandet. Dagens PS 65 000 annonser borta i […]</p>
-      </div>
-      <!-- SIDEBAR LIST (items 4–7) -->
+
+      <!-- FEATURE (item 2 & 3) -->
+      
+        <div class="feature">
+          <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg" alt="">
+          <h2><a href="https://www.dagensps.se/weekend/vattenmelon-varje-dag-har-ar-riskerna-du-bor-kanna-till/">Vattenmelon varje dag? Här är riskerna du bör känna till</a></h2>
+          <div class="meta">Wed, 30 Jul 2025 17:52:05 +0000</div>
+          <div class="body">
+<p><strong>Vattenmelon är svalkande och nyttigt men att äta den varje dag kan få oväntade konsekvenser för din hälsa. Här är riskerna du bör känna till.</strong></p>
+
+
+
+<p>Vattenmelon är för många en självklar sommarfavorit. </p>
+
+
+
+<p>Men att äta frukten varje dag kan leda till oväntade biverkningar, enligt hälsosajter och dietister, som varnar för allt från magproblem till näringsobalanser.</p>
+
+
+
+<p><strong>Missa inte: </strong><a href="https://www.dagensps.se/life-science/forskare-upptacker-plotsligt-skifte-da-accelererar-aldrandet/">Forskare upptäcker plötsligt skifte – då accelererar åldrandet. Dagens PS</a></p>
+
+
+
+<h2 class="wp-block-heading" id="h-magproblem-och-blodsocker-vid-vattenmelonintag">Magproblem och blodsocker vid vattenmelonintag</h2>
+
+
+
+<p>Vattenmelon består till över 90 procent av vatten och finns i över 1 000 olika varianter med skiftande form, färg och smak. Den populära sommarfrukten, som tillhör familjen gurkväxter, är en riktig vitaminbomb, men kan också vara förrädisk.</p>
+
+
+
+<p>Vattenmelon kan orsaka besvär för personer med känslig mage. Dietisten <strong>Sofia Antonsson</strong> varnade tidigare i <a href="https://www.tv4.se/artikel/6wcJjnHBcCaIraOmkmKMcQ/vattenmelonens-dag-daerfoer-boer-vissa-undvika-populaera-frukten">TV4: </a></p>
+
+
+
+<p>”Den innehåller vissa ämnen som kan få magen att bli som en liten ballong. Har man känslig mage så blir vattenmelonen som en bomb”. </p>
+
+
+
+<p>&#8220;Så man kan säga att den är den värsta av de värsta&#8221;, tillade hon. </p>
+
+
+
+<p><a href="https://www.verywellhealth.com/side-effects-of-watermelon-11778073">Verywell Health </a>listar också matsmältningsproblem som en vanlig effekt av överdrivet intag. De skriver att frukten kan ge uppblåsthet, förstoppning, diarré och magont, och i sällsynta fall skada njurar och lever hos personer som är fruktosintoleranta.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg" alt="Vattenmelon är en klassiker på stranden som svalkar, men vissa bör vara försiktiga med mängden. " class="wp-image-1545873" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-300x150.jpg 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-768x384.jpg 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Vattenmelon är en klassiker på stranden som svalkar, men vissa bör vara försiktiga med mängden. (Foto: Unsplash)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading">Kalium, migrän och allergier vid vattenmelonintag</h2>
+
+
+
+<p>En deciliter vattenmelon innehåller cirka 170 milligram kalium. Verywell Health varnar för att ett högt kaliumintag kan leda till muskelsvaghet, förlamning och störningar i hjärtrytmen. Personer som tar mediciner mot njursjukdom eller hjärtproblem bör vara särskilt försiktiga med kalium, skriver de. </p>
+
+
+
+<p>Frukten innehåller också aminosyran tyramin, som kan utlösa migrän. En studie med nästan 4 000 deltagare placerade vattenmelon högst på listan över frukter som gav huvudvärk.</p>
+
+
+
+<p>Dietisten <strong>Lara Whitson </strong>påpekar i <a href="https://www.independent.co.uk/life-style/watermelon-melon-fruit-side-effect-b2798346.html">The Independent </a>att: </p>
+
+
+
+<p>”Du kan säkert äta två portioner vattenmelon per dag men det är aldrig en bra idé att gå på en diet som bara innehåller en sorts mat”. </p>
+
+
+
+<p>Allergiska reaktioner mot vattenmelon är ovanliga, men Verywell Health beskriver fall med svullnad, andningssvårigheter och i extrema fall livshotande anafylaktisk chock.</p>
+
+
+
+<p>”Personer med allergier mot gräs kan reagera på persikor, selleri, tomater, meloner (cantalupemelon, vattenmelon och honungsdagg) och apelsiner. De som reagerar på ambrosia kan få symtom när de äter mat som banan, gurka, melon och zucchini”, varnar American Academy of Allergy Asthma and Immunology.</p>
+
+
+
+<p><strong>Läs också: </strong><a href="https://www.dagensps.se/privatekonomi/sakerhetsbranschen-rusar-trots-minskad-brottslighet/">Säkerhetsbranschen rusar – trots minskad brottslighet. Dagens PS</a></p>
+
+
+
+    <section class="c-block-greybox" style="background-color: #fbf7f3;;">
+    
+                                    <p style="text-align: center;">Få dagens viktigaste nyheter från Dagens PS. Prenumerera på våra nyhetsbrev.</p>
+                                                            <div class="c-block-greybox__buttons" style=" justify-content: center;">
+                    <a target="_blank" class="c-block-greybox__button" href="https://ut.dagensps.se/DPS-LK" style="max-width: 100%; text-align: center; width: auto; background-color: #2c2a5a; ">Prenumerera nu </a>
+                </div>
+            
+                        </section>
+
+
+
+<h2 class="wp-block-heading" id="h-hudforandringar-och-naringsobalanser-efter-mycket-vattenmelon">Hudförändringar och näringsobalanser efter mycket vattenmelon</h2>
+
+
+
+<p>Stora mängder vattenmelon kan också tillfälligt färga huden orange. Fenomenet, kallat lykopenmi, är ofarligt och försvinner när intaget minskas, enligt Verywell Health.</p>
+
+
+
+<p>Att enbart äta vattenmelon under längre perioder kan leda till näringsobalanser och risk för undernäring. Dietisten <strong>Jessica Plowman </strong>förklarar: </p>
+
+
+
+<p>”Om allt du åt varje dag var vattenmelon då skulle det vara ett problem. Men det är ganska svårt att överäta”. </p>
+
+
+
+<p>Trots riskerna är vattenmelon rik på vitamin C, lykopen och antioxidanter. Enligt Medical News Today kan frukten bidra till bättre hudhälsa, sänkt blodtryck och ökad mättnadskänsla vid viktkontroll.</p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/varlden/snusstorm-mot-willys-rekordmanga-skriver-under-protest/">Snusstorm mot Willys – rekordmånga skriver under protest. Dagens PS</a></p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/">Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång. Dagens PS</a></p>
+</div>
+        </div>
+      
+        <div class="feature">
+          <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="">
+          <h2><a href="https://www.dagensps.se/weekend/spanien-gor-storstadning-pa-airbnb-tiotusentals-annonser-borta/">Spanien gör storstädning på Airbnb – tiotusentals annonser borta</a></h2>
+          <div class="meta">Wed, 30 Jul 2025 15:07:36 +0000</div>
+          <div class="body">
+<p><strong>Spanien skärper tonen mot korttidsuthyrningar. Tiotusentals annonser på Airbnb har redan försvunnit – och fler kan snart ryka.</strong></p>
+
+
+
+<p>Spaniens regering trappar nu upp insatsen mot olagliga uthyrningar. </p>
+
+
+
+<p>Airbnb granskas hårdare än någonsin när myndigheterna försöker återta kontrollen över bostadsmarknaden.</p>
+
+
+
+<p><strong>Missa inte: </strong><a href="https://www.dagensps.se/life-science/forskare-upptacker-plotsligt-skifte-da-accelererar-aldrandet/">Forskare upptäcker plötsligt skifte – då accelererar åldrandet. Dagens PS</a></p>
+
+
+
+<h2 class="wp-block-heading" id="h-65-000-annonser-borta-i-spanien">65 000 annonser borta i Spanien</h2>
+
+
+
+<p>Efter år av skenande hyror och protester mot massturismen slår Spaniens regering nu hårdare mot korttidsuthyrningar. Konsumentdepartementet har redan fått bort omkring 65 000 olagliga annonser från Airbnb och ytterligare nästan 55 000 uthyrningar är under utredning, skriver <a href="https://elpais.com/economia/2025-07-30/consumo-logra-la-retirada-de-65000-anuncios-ilegales-en-airbnb-y-denuncia-otros-55000-sin-numero-de-registro.html">El País.</a></p>
+
+
+
+<p>Enligt <a href="https://www.reuters.com/business/retail-consumer/spain-targets-120000-airbnb-listings-deemed-illegal-2025-07-30/">Reuters </a>har den spanska regeringen, liksom kommunfullmäktige och regionala myndigheter, inlett en bred offensiv mot uthyrning av turistbostäder via sajter som Airbnb och Booking.com.</p>
+
+
+
+<p>Airbnb riskerar att behöva ta bort ännu fler annonser när myndigheterna granskar uthyrningar som saknar det licensnummer som sedan den 1 juli 2025 är obligatoriskt för turistboenden.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-domstol-stottar-regeringens-linje">Domstol stöttar regeringens linje</h2>
+
+
+
+<p>Airbnb har flera gånger försökt överklaga myndigheternas beslut, men spanska domstolar har stött regeringens linje. Minister <strong>Pablo Bustinduy</strong> uppger att insatsen ska ”garantera den konstitutionella rätten till bostad över storföretagens vinster”.</p>
+
+
+
+<p>För att underlätta framtida kontroller ska Airbnb nu skicka månatliga rapporter med information om uthyrningarna till konsumentdepartementet. Regeringen betonar att arbetet med att identifiera fler olagliga annonser fortsätter och att fler rättsliga åtgärder kan följa.</p>
+
+
+
+    <section class="c-block-greybox" style="background-color: #fbf7f3;;">
+    
+                                    <p style="text-align: center;">Få dagens viktigaste nyheter från Dagens PS. Prenumerera på våra nyhetsbrev.</p>
+                                                            <div class="c-block-greybox__buttons" style=" justify-content: center;">
+                    <a target="_blank" class="c-block-greybox__button" href="https://ut.dagensps.se/DPS-LK" style="max-width: 100%; text-align: center; width: auto; background-color: #2c2a5a; ">Prenumerera nu </a>
+                </div>
+            
+                        </section>
+
+
+
+<h2 class="wp-block-heading" id="h-ar-av-bostadskris">År av bostadskris</h2>
+
+
+
+<p>Problemen med korttidsuthyrningar har byggts upp under flera år i Spanien. <a href="https://www.dagensps.se/varlden/spanien-bojkottar-airbnb-barcelonas-storsta-problem/">Dagens PS</a> rapporterade 2024 att Barcelona beslutat dra tillbaka alla korttidslicenser från och med 2028. Stadens borgmästare <strong>Jaume Collboni</strong> beskrev då uthyrningarna som ”Barcelonas största problem” och noterade att hyrorna ökat med 68 procent på tio år.</p>
+
+
+
+<p>Samma år rapporterade <a href="https://www.dagensps.se/privatekonomi/larmet-fler-spanjorer-hemlosa-nar-airbnb-tar-over/">Dagens PS </a>även att Spaniens bostadsmarknad skakades av Airbnb och att bostadsbristen blivit alltmer akut. Bristen på allmännyttiga bostäder och ökningen av semesteruthyrningar via Airbnb och Booking.com hade då bidragit till att hemlösheten ökat med 24 procent sedan 2012.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="Vy över Barcelona." class="wp-image-1417437" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-300x150.jpg 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-768x384.jpg 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Barcelona har satt ner foten mot turisterna (Foto:Unsplash)</figcaption></figure>
+
+
+
+<p>Konkurrensen om långtidsboenden är extremt hård. Enligt Reuters får varje hyresannons i Madrid i genomsnitt över 40 svar, och hyrorna för en lägenhet som hyrs ut via Airbnb kan vara dubbelt så höga som marknadsvärdet för långtidsboende i samma område.</p>
+
+
+
+<p>Semesteruthyrningarna har också lett till personliga tragedier. I Madrid fick pensionären <strong>Carmen Cajamarca </strong>lämna sin bostad efter 25 år när huset såldes till en fond som renoverade lägenheterna för korttidsuthyrning. ”Det här är bara för turister och de människor som alltid har bott här, var ska vi bo?”, sa hon då till Reuters.</p>
+
+
+
+<p><strong>Läs också: </strong><a href="https://www.dagensps.se/privatekonomi/miljonlon-i-sikte-da-ska-du-valja-de-har-yrkena/">Miljonlön i sikte? Då ska du välja de här yrkena. Dagens PS</a></p>
+
+
+
+<h2 class="wp-block-heading" id="h-alla-inte-imponerade-av-airbnb">Alla inte imponerade av Airbnb</h2>
+
+
+
+<p>Samtidigt satsar Airbnb stort på att bredda sin affärsmodell. Vd:n <strong>Brian Chesky</strong> har beskrivit en ny vision där Airbnb ska bli en <a href="https://www.dagensps.se/weekend/resor/airbnb-vill-bli-airbnb-for-alla-mojliga-upplevelser-men-alla-ar-inte-imponerade/">plattform för hela reseupplevelsen och inte bara boendet</a>. </p>
+
+
+
+<p>”Vi försöker blanda konst och teknologi”, sa Chesky till Wall Street Journal.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/12/sdlOa1QPX1MgBk-1024x512.jpg" alt="Spaniens nya lag hotar turismen" class="wp-image-1475230" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/12/sdlOa1QPX1MgBk-300x150.jpg 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/12/sdlOa1QPX1MgBk-1024x512.jpg 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/12/sdlOa1QPX1MgBk-768x384.jpg 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/12/sdlOa1QPX1MgBk.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">&#8220;Airbnb förvandlade vår gamla stadsdel till en kuliss för utklädda turister – ingen från området har råd att bo kvar&#8221;, säger María del Mar Ortega, stadsplanerare i Barcelona. (Foto: Emilio Morenatti/AP/TT)</figcaption></figure>
+
+
+
+<p>Men kritiken mot företaget växer, och inte minst i Spanien. </p>
+
+
+
+<p>”Airbnb förvandlade vår gamla stadsdel till en kuliss för utklädda turister – ingen från området har råd att bo kvar”, säger <strong>María del Mar Ortega</strong>, stadsplanerare i Barcelona. Hon tillägger att staden välkomnar turister men ”inte på bekostnad av våra grannar”.</p>
+
+
+
+<p>Hittills är Barcelona den enda stad som beslutat att helt avskaffa sina drygt 10 000 licenser för turistboenden, men Spaniens regering vill nu se en bredare insats i hela landet.</p>
+
+
+
+<p>Konsumentdepartementet uppger att kampen mot otillåtna uthyrningar kommer att fortsätta och att fler rättsliga åtgärder väntas om plattformarna inte följer reglerna.</p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/privatekonomi/fler-koper-fritidshus-men-priserna-sjunker-i-flera-lan/">Fler köper fritidshus – men priserna sjunker i flera län. Dagens PS</a></p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/weekend/myggor-dras-till-vissa-manniskor-hor-du-till-dem/">Myggor dras till vissa människor – hör du till dem? Dagens PS</a></p>
+
+
+
+<P><sub>ANNONS</sub><P>
+<script src="//resources.compricer.se/shared/coops/js/external/iframe.js" defer=""></script>
+    <iframe loading="lazy" id="compricer_iframe" src="https://dagensps.compricer.se/widget/sparanderantor/prio/ " width="800px" height="450px" scrolling="no"></iframe>
+</div>
+        </div>
+      
+
+      <!-- SIDEBAR (items 4–7) -->
       <aside class="sidebar">
         <ul>
           
@@ -118,6 +471,7 @@
           
         </ul>
       </aside>
+
     </div>
 
     <!-- BOTTOM GRID (items 8–10) -->
@@ -127,24 +481,391 @@
           <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg" alt="">
           <h3><a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/">Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång</a></h3>
           <div class="meta">Tue, 29 Jul 2025 11:06:45 +0000</div>
-          <p>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång. En ny jättestudie visar att det går att sakta ner den kognitiva nedgången som ofta kommer med åldern. Och det handlar varken om piller eller dyra behandlingar. Missa inte: 4 000 år gammalt egyptiskt fynd avslöjar okänd […]</p>
+          <div class="body">
+<p><strong>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång.</strong></p>
+
+
+
+<p>En ny jättestudie visar att det går att sakta ner den kognitiva nedgången som ofta kommer med åldern.</p>
+
+
+
+<p>Och det handlar varken om piller eller dyra behandlingar.</p>
+
+
+
+<p><strong>Missa inte:</strong><a href="https://www.dagensps.se/varlden/4-000-ar-gammalt-egyptiskt-fynd-avslojar-okand-detalj/"> 4 000 år gammalt egyptiskt fynd avslöjar okänd detalj. Dagens PS</a></p>
+
+
+
+<h2 class="wp-block-heading" id="h-rekordstor-hjarnstudie">Rekordstor hjärnstudie</h2>
+
+
+
+<p>Den amerikanska POINTER-studien är den största kliniska studien hittills som undersökt hur livsstilsförändringar kan skydda hjärnan hos äldre. Över 2 100 personer i åldrarna 60–79 deltog, alla med stillasittande vanor och riskfaktorer för demens.</p>
+
+
+
+<p>Deltagarna delades upp i två grupper: en fick ett strukturerat program med regelbundna teammöten, vägledning kring kost och träning, samt stöd för socialt umgänge och hjärnträning. Den andra gruppen fick endast grundläggande information och fick själva välja sina förändringar utan samma typ av coachning och uppföljning.</p>
+
+
+
+<p>&#8220;Vi fann att personer i det strukturerade programmet verkade fördröja normalt kognitivt åldrande med ett till nästan två år jämfört med den självstyrda gruppen – personer som inte fick samma grad av stöd&#8221;, säger huvudforskaren <strong>Laura Baker </strong>vid Wake Forest University School of Medicine. </p>
+
+
+
+<p>&#8220;Den självstyrda gruppen förbättrade dock även sina kognitiva poäng över tid&#8221;, tillägger hon. </p>
+
+
+
+<p>Studien finansierades av Alzheimersföreningen och resultaten presenterades på deras internationella konferens i Toronto samt i medicintidskriften <em>JAMA</em>.</p>
+
+
+
+    <section class="c-block-greybox" style="background-color: #fbf7f3;;">
+    
+                                    <p style="text-align: center;">Få dagens viktigaste nyheter från Dagens PS. Prenumerera på våra nyhetsbrev.</p>
+                                                            <div class="c-block-greybox__buttons" style=" justify-content: center;">
+                    <a target="_blank" class="c-block-greybox__button" href="https://ut.dagensps.se/DPS-LK" style="max-width: 100%; text-align: center; width: auto; background-color: #2c2a5a; ">Prenumerera nu </a>
+                </div>
+            
+                        </section>
+
+
+
+<h2 class="wp-block-heading" id="h-sa-bromsas-nedgangen">Så bromsas nedgången</h2>
+
+
+
+<p>Forskarna pekar på fyra faktorer som förbättrade deltagarnas kognition:</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Träning:</strong> Daglig aerob motion och styrketräning flera gånger i veckan.</li>
+
+
+
+<li><strong>Kost:</strong> En MIND-diet med mycket bär, grönsaker och olivolja.</li>
+
+
+
+<li><strong>Hjärnträning:</strong> Digitala övningar för minne och problemlösning.</li>
+
+
+
+<li><strong>Socialt umgänge:</strong> Uppgifter som uppmuntrade deltagarna att träffa nya människor.</li>
+</ul>
+
+
+
+<p>Att bli bättre på att umgås socialt var en viktig del av programmet. Forskarna gav teamen uppgifter, som att prata med främlingar eller gå ut med vänner.</p>
+
+
+
+<p><strong>Phyllis Jones,</strong> 62, som deltog i studien, berättar att hon under programmet hittade en ny bästa vän.</p>
+
+
+
+<p>”Isolering är hemskt för hjärnan, när man väl rör på sig och äter hälsosamt förändras energinivån, och man blir automatiskt mer social”, säger hon till <a href="https://edition.cnn.com/2025/07/28/health/cognitive-decline-pointer-study-wellness">CNN.</a></p>
+
+
+
+<p>MIND-dieten, som användes i programmet, kombinerar medelhavskost och DASH-diet och är framtagen för att främja hjärnhälsa.</p>
+
+
+
+<p>Forskaren<strong> Russell Sawyer,</strong> biträdande professor vid University of Cincinnati Gardner Neuroscience Institute och forskare i en separat studie om MIND-dieten, beskriver konceptet så här:</p>
+
+
+
+<p>&#8220;Bland MIND-dietens komponenter finns 10 hälsosamma matgrupper för hjärnan: gröna bladgrönsaker, andra grönsaker, nötter, bär, bönor, fullkorn, skaldjur, fågel, olivolja och vin&#8221;. </p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg" alt="Bär är en central del av MIND-dieten, som kombinerar medelhavskost och DASH-diet för att stärka hjärnhälsan och bromsa kognitiv nedgång. (Foto: Unsplash)" class="wp-image-1545398" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-300x150.jpg 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-768x384.jpg 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Bär är en central del av MIND-dieten, som kombinerar medelhavskost och DASH-diet för att stärka hjärnhälsan och bromsa kognitiv nedgång. (Foto: Unsplash)</figcaption></figure>
+
+
+
+<p>Fem ohälsosamma matgrupper som rött kött, smör och margarin, ost, stekt och snabbmat samt bakverk och sötsaker,<a href="https://edition.cnn.com/2024/09/18/health/mind-diet-cognitive-decline-wellness"> är begränsade i MIND-kosten.</a></p>
+
+
+
+<p>&#8220;Vi var tvungna att äta bär och grönsaker de flesta dagar, inklusive gröna bladgrönsaker, och vi skulle äta 2 matskedar extra jungfruolja en gång om dagen&#8221;, berättar Jones.</p>
+
+
+
+<p><strong>Läs också: </strong><a href="https://www.dagensps.se/life-science/tiden-flyger-forbi-med-aldern-forskare-har-en-mojlig-forklaring/">Tiden flyger förbi med åldern? Forskare har en möjlig förklaring. Dagens PS</a></p>
+
+
+
+<h2 class="wp-block-heading" id="h-mer-forskning-pa-vag">Mer forskning på väg</h2>
+
+
+
+<p>Men forskarna understryker att det krävs längre studier för att fullt ut förstå hur livsstilsförändringar påverkar hjärnans åldrande.</p>
+
+
+
+<p>&#8220;Hjärnhälsa är ett långsiktigt spel, med tiden kan förändring vara meningsfull&#8221;, säger <strong>Maria Carillo</strong>, chefsvetenskaplig chef för Alzheimersföreningen.</p>
+
+
+
+<p>En ny fyraårig uppföljning med över 80 procent av deltagarna har redan startat och väntas ge ännu tydligare svar.</p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/privatekonomi/miljonlon-i-sikte-da-ska-du-valja-de-har-yrkena/">Miljonlön i sikte? Då ska du välja de här yrkena. Dagens PS</a></p>
+
+
+
+<p><strong>Läs även: </strong><a href="https://www.dagensps.se/privatekonomi/fler-koper-fritidshus-men-priserna-sjunker-i-flera-lan/">Fler köper fritidshus – men priserna sjunker i flera län. Dagens PS</a></p>
+</div>
         </div>
       
         <div class="tile">
           <img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F1-161.png&#038;w=1200&#038;q=75" alt="">
           <h3><a href="https://www.dagensps.se/weekend/noje-underhallning/hollywood-nej-tack-vi-flyger-till-irland-i-stallet/">“Hollywood? Nej tack. Vi flyger till Irland i stället”</a></h3>
           <div class="meta">Tue, 29 Jul 2025 06:20:46 +0000</div>
-          <p>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland. När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett fönster i västra Irland. Och han är inte ensam. Filmvärlden har fått ett nytt älsklingsland – och det är inte längre Kalifornien. […]</p>
+          <div class="body">
+<p><strong>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland.</strong></p>
+
+
+
+<p>När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett fönster i västra Irland. Och han är inte ensam. Filmvärlden har fått ett nytt älsklingsland – och det är inte längre Kalifornien.</p>
+
+
+
+<p>Irländska serier som ”Bad Sisters”, ”Normal People” och Oscarsnominerade ”The Quiet Girl” är bara toppen på ett grönt isberg. Enligt en färsk rapport från <a href="https://www.screenireland.ie/news/father-mother-sister-brother-to-receive-world-premiere-at-the-2025-venice-international-film-festival">Screen Ireland</a> pumpar audiovisuella produktioner nu in över en miljard euro per år i Irlands ekonomi – ett rekord som fått resten av världen att snegla avundsjukt mot Dublin.</p>
+
+
+
+
+    <section class="c-external-notice">
+                    <div class="c-external-notice__image">
+                <img decoding="async" src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F1-161.png&#038;w=1200&#038;q=75" />
+            </div>
+                            <a href="https://www.dagensps.se/weekend/noje-underhallning/da-blev-jag-besviken-pa-ozzy/" class="c-external-notice__content" target="_blank">
+                <h2>Då blev jag besviken på Ozzy</h2>
+                                    <p>Han var vår gud. Vår demon. Vår ledstjärna. Men när Ozzy Osbourne återförenades med Black Sabbath i Hultsfred i slutet av 90-talet gick något sönder.</p>
+                            </a>
+            </section>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-159-1024x512.png" alt="" class="wp-image-1545292" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-159-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-159-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-159-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-159.png 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Den lilla flickan gick tyst – men slog världen med häpnad. (Foto: Pressbild)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-skatteparadis-for-regissorer">Skatteparadis för regissörer</h2>
+
+
+
+<p>Hur blev då ett land med fler får än filmstudior en stjärna på den globala produktionshimlen?</p>
+
+
+
+<p>Svaret stavas: <strong>Section 481</strong>.</p>
+
+
+
+<p>Det är namnet på det irländska skatteavdraget för filmproduktion – ett av världens mest generösa. Här kan produktioner få tillbaka upp till <strong>40 procent</strong> av sina kostnader. Det är nästan dubbelt så mycket som i Hollywood, där snittet ligger runt 20 procent.</p>
+
+
+
+<p>Som skådespelaren Rob Lowe uttryckte det:<br>”Det är billigare att flyga 100 personer till Irland än att spela in i Los Angeles.”</p>
+
+
+
+<h2 class="wp-block-heading" id="h-fran-medeltida-slott-till-ai-studior">Från medeltida slott till AI-studior</h2>
+
+
+
+<p>Men det handlar inte bara om pengar. Irland har under tre decennier investerat i infrastruktur, utbildning och talangutveckling. Idag finns det hypermoderna filmstudior i både Limerick och Wicklow, samtidigt som landskapet erbjuder en Tolkien-vänlig fond till alla fantasyproduktioner.</p>
+
+
+
+<p>I den rapport som Screen Ireland nyligen publicerat konstateras att landets produktionskluster nu också sysselsätter över 12 000 personer – och att behovet av nya utbildningssatsningar växer i takt med Netflix-budgetarna.</p>
+
+
+
+<p>Producenten Alan Moloney säger till <a href="https://www.bbc.com/worklife/article/20250716-why-the-irish-film-industry-is-booming">BBC</a>:<br>”Vi har byggt något som är hållbart – och som lyfter våra egna röster.”</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/noje-underhallning/titanic-2-filmen-som-inte-finns-men-som-alla-vill-se/">Titanic 2 – Filmen som inte finns men som alla vill se</a></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-172-1024x512.png" alt="" class="wp-image-1545295" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-172-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-172-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-172-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-172.png 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Med 40 procents skatteavdrag och en stark berättelse blir Irland oslagbart. (Foto: Pressbild)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-stormsakra-filmskapare">Stormsäkra filmskapare</h2>
+
+
+
+<p>Trots globala utmaningar – som pandemin, manusstrejker och potentiella handelstullar från Trump-hållet – står Irlands filmindustri pall. ”Vi klarade pandemin, vi klarade manusförfattarnas strejk. Vi klarar detta också”, säger Moloney med ett leende.</p>
+
+
+
+<p>Perfect Weekend gör tummen upp för det irländska filmbolaget. För visst är det något lockande med en nation där tax breaks och storytelling går hand i hand.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-3-anledningar-att-filma-i-irland">3 anledningar att filma i Irland</h2>
+
+
+
+<ol class="wp-block-list">
+<li><strong>Skatteavdrag deluxe</strong><br>Upp till 40 procent tillbaka på produktionskostnader – även för små produktioner.</li>
+
+
+
+<li><strong>Talang och teknik</strong><br>Landet har på kort tid byggt upp ett helt ekosystem av utbildning, teknik och studios. Allt med EU-stöd i ryggen.</li>
+
+
+
+<li><strong>Natur som ser dyr ut</strong><br>Få länder erbjuder lika mycket dramatik i landskapet som Irland. Kust, hed, byar och slott – på ett dagsavstånd från Dublin.</li>
+</ol>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-181-1024x512.png" alt="" class="wp-image-1545294" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-181-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-181-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-181-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-181.png 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-fakta-the-quiet-girl">Fakta: <strong>The Quiet Girl</strong></h2>
+
+
+
+<p>– <strong>Originaltitel:</strong> <em>An Cailín Ciúin</em><br>– <strong>Regissör:</strong> Colm Bairéad<br>– <strong>Handling:</strong> En tystlåten flicka skickas bort från sin kaotiska familj till släktingar på landet, där hon för första gången får uppleva trygghet och kärlek.<br>– <strong>Språk:</strong> Irländska (Gaeilge) – filmen var den första på språket att Oscarsnomineras.<br>– <strong>Premiär:</strong> 2022 – fick internationellt genomslag på Berlinalen och senare Oscarsnominering för Bästa internationella film.<br>– <strong>Fun fact:</strong> Filmen baseras på Claire Keegans novell <em>Foster</em> och spelades in på bara 30 dagar.</p>
+
+
+
+<p><strong>Källa:</strong> <a href="https://www.screenireland.ie/news/father-mother-sister-brother-to-receive-world-premiere-at-the-2025-venice-international-film-festival">Screen Ireland</a></p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/noje-underhallning/south-park-grundarna-nu-dollarmiljardarer-attackerar-trump/">&#8220;South Park&#8221;-grundarna nu dollarmiljardärer – attackerar Trump</a></p>
+</div>
         </div>
       
         <div class="tile">
           <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png" alt="">
           <h3><a href="https://www.dagensps.se/weekend/resor/hejda-till-100-millilitersregeln-i-din-sakerhetskontroll/">Snart får du ta med två liter vätska i handbagaget</a></h3>
           <div class="meta">Tue, 29 Jul 2025 05:57:15 +0000</div>
-          <p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan. Framtiden är här – åtminstone i Roms säkerhetskontroll Den ökända 100-millilitersgränsen för vätskor i handbagaget är snart ett minne blott. EU håller just nu på att fasa ut regeln – förutsatt att flygplatsen […]</p>
+          <div class="body">
+<p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-framtiden-ar-har-atminstone-i-roms-sakerhetskontroll">Framtiden är här – åtminstone i Roms säkerhetskontroll</h2>
+
+
+
+<p>Den ökända 100-millilitersgränsen för vätskor i handbagaget är snart ett minne blott. EU håller just nu på att fasa ut regeln – förutsatt att flygplatsen har den nya typen av 3D-skanner. Och ja, den finns redan på plats i Rom, Milano och Helsingfors,<a href="https://yle.fi/a/7-10081793"> rapporterar YLE.</a></p>
+
+
+
+<p>Från Rom har man sedan i lördags kunnat flyga med vätskeförpackningar på upp till två liter i handbagaget. Två liter! Det är som att resa med en liten dunk vin eller ett riktigt stort balsam. En lyx som inte är möjlig från alla flygplatser – än.</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.realtid.se/samhalle-hallbarhet/forbud-mot-kortare-flygresor-i-frankrike/">Förbud mot kortare flygresor i Frankrike</a></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png" alt="" class="wp-image-1545272" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180.png 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Snart kan du packa necessären som en vuxen människa. (Foto: Canva)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-tekniken-avgor-inte-byrakratin">Tekniken avgör – inte byråkratin</h2>
+
+
+
+<p>EU-kommissionen bekräftar att förändringen är på gång, men allt hänger på tekniken. Traditionella röntgenapparater klarar inte att upptäcka flytande sprängämnen – därav de små flaskorna. Men 3D-skanning gör det möjligt att se innehållet på molekylnivå, vilket i sin tur öppnar för större förpackningar.</p>
+
+
+
+<p>European Civil Aviation Conference (ECAC) godkände tekniken i juni, vilket nu banar väg för nya regler. Om din flygplats har rätt apparatur, kommer du alltså snart att kunna ta med dig större mängder vätska i handbagaget – så länge du inte ska till USA eller Israel. Där gäller fortfarande gammal teknik och därmed gamla regler.</p>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/london-kan-fa-ny-flygplats-bara-90-minuter-fran-city/">London kan få ny flygplats – bara 90 minuter från city</a></p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/05/sdlCmIOzk_3ULc-nh-1024x576.jpg" alt="Snart tas de nya säkerhetskontrollerna i bruk på Arlanda och då kommer säkerhetskontrollen gå snabbare" class="wp-image-1289484" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/05/sdlCmIOzk_3ULc-nh-300x169.jpg 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/05/sdlCmIOzk_3ULc-nh-1024x576.jpg 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/05/sdlCmIOzk_3ULc-nh-768x432.jpg 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/05/sdlCmIOzk_3ULc-nh.jpg 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Sverige har tekniken – men väntar på tillåtelse att använda den. (Foto: TT)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-sverige-ar-redo-men-vantar-pa-klartecken-for-sin-sakerhetskontroll">Sverige är redo – men väntar på klartecken för sin säkerhetskontroll</h2>
+
+
+
+<p>Flera svenska flygplatser, inklusive Arlanda, har redan installerat den nya 3D-tekniken. Swedavia bekräftar att säkerhetskontrollerna i Terminal 5 byggs om med den nya tekniken och att hela omställningen ska vara klar under 2025.</p>
+
+
+
+<p>Men precis som i Finland väntar man fortfarande på ett slutgiltigt besked från EU. Den nya tekniken är alltså på plats – men reglerna är inte ändrade ännu. För svenska weekendresenärer innebär det fortsatt ziplock-liv ett tag till, även om förändringen är nära.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="512" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-158-1024x512.png" alt="" class="wp-image-1545270" srcset="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-158-300x150.png 300w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-158-1024x512.png 1024w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-158-768x384.png 768w, https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-158.png 1200w" sizes="auto, (max-width: 1024px) 100vw, 1024px" /><figcaption class="wp-element-caption">Rom leder vätskerevolutionen – Arlanda står i startblocken. (Foto: Canva)</figcaption></figure>
+
+
+
+<h2 class="wp-block-heading" id="h-ett-steg-mot-friare-weekendresor">Ett steg mot friare weekendresor</h2>
+
+
+
+<p>För weekendresenärer betyder det här slutet på ziplock-helvetet. Slut på att hälla över dyra hudkrämer i obehagliga miniburkar. Snart kan du resa med full storlek av både duschgelé och vinägerchips-dipp – och fortfarande klara dig med enbart handbagage.</p>
+
+
+
+<h2 class="wp-block-heading" id="h-nya-vatskeregler-i-korthet"><strong> Nya vätskeregler i korthet</strong></h2>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Vad händer?</strong> Gränsen på 100 milliliter för vätskor i handbagage försvinner – på vissa flygplatser.</li>
+
+
+
+<li><strong>När då?</strong> Tidigast från augusti 2025, beroende på tekniken.</li>
+
+
+
+<li><strong>Vad krävs?</strong> Flygplatsen måste ha 3D-skannrar godkända av EU.</li>
+
+
+
+<li><strong>Var funkar det redan?</strong> Rom, Milano, Helsingfors – och fler på väg.</li>
+
+
+
+<li><strong>Finns tekniken i Sverige?</strong> Ja, bland annat på Arlanda – men ännu inget godkännande för att använda den fullt ut.</li>
+
+
+
+<li><strong>Vad gäller för USA och Israel?</strong> Där gäller fortfarande gamla regler – småflaskorna får hänga med.</li>
+</ul>
+
+
+
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/flygpassagerarens-kyliga-svar-jag-betalade-mer-sitt-du-i-bak/">&#8220;Jag betalade mer&#8221; – flygpassagerarens svar hyllas över hela internet</a></p>
+
+
+
+<P><sub>ANNONS</sub><P>
+<script src="//resources.compricer.se/shared/coops/js/external/iframe.js" defer=""></script>
+    <iframe loading="lazy" id="compricer_iframe" src="https://dagensps.compricer.se/widget/sparanderantor/prio/ " width="800px" height="450px" scrolling="no"></iframe>
+</div>
         </div>
       
     </div>
+
   </main>
 </body>
 </html>
