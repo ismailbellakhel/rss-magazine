@@ -2,105 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Perfect Weekend</title>
+  <title>Perfect Weekend Magazine</title>
   <style>
-    /* inline magazine CSS */
-    body{margin:0;font-family:Georgia,serif;background:#f4f0ec;color:#222}
-    header{background:#eee0d4;padding:1.5rem;border-bottom:4px solid #111;text-align:center;font-size:2.2rem;letter-spacing:1px}
-    .container{display:grid;gap:2rem;padding:2rem;max-width:1400px;margin:auto;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-    .feature-center{grid-column:span 2}
-    .card{background:#fff;overflow:hidden;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;flex-direction:column}
-    .card img{width:100%;display:block}
-    .card h2{margin:1rem;font-size:1.2rem;color:#333}
-    .card p{margin:0 1rem 1rem;line-height:1.4;color:#555}
-    a{text-decoration:none;color:#00427e}
-    a:hover{text-decoration:underline}
-    @media(max-width:768px){.feature-center{grid-column:span 1}}
+    /* —— PALETTE & RESET —— */
+    :root{--bg:#fff;--frame:#f4e3d7;--accent:#c03;--txt:#222;--muted:#555;}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--frame);font-family:Georgia,serif;color:var(--txt)}
+    a{color:var(--accent);text-decoration:none}
+
+    /* —— HEADER —— */
+    header{background:var(--accent);color:#fff;text-align:center;padding:20px 0}
+    header h1{font-size:2.5rem;letter-spacing:.1em}
+
+    /* —— GRID —— */
+    main{display:grid;
+         grid-template-columns:1fr 2fr 1fr;
+         gap:20px;
+         max-width:1200px;margin:20px auto;padding:0 20px 40px}
+
+    /* —— PLACE TILES —— */
+    /* left 1–4 */
+    .tile-1,.tile-2,.tile-3,.tile-4{grid-column:1}
+    /* center 5–6 */
+    .tile-5,.tile-6{grid-column:2}
+    /* right 7–10 */
+    .tile-7,.tile-8,.tile-9,.tile-10{grid-column:3}
+
+    /* —— TILES —— */
+    .tile{background:var(--bg);padding:16px;border:1px solid var(--muted)}
+    .tile img{width:100%;display:block;margin-bottom:12px}
+    .tile h2{font-size:1.25rem;margin-bottom:6px}
+    .tile .meta{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+    .tile p{font-size:1rem;line-height:1.4}
+
+    /* —— RESPONSIVE —— */
+    @media(max-width:900px){
+      main{grid-template-columns:1fr}
+      .tile{grid-column:1!important}
+    }
   </style>
 </head>
 <body>
-  <header>PERFECT WEEKEND</header>
-  <main class="container">
+  <header>
+    <h1>Perfect Weekend</h1>
+  </header>
+  <main>
     
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/halsa/var-hjarna-krymper-och-det-ar-inte-pa-skoj/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-1024x512.png" alt="Vår hjärna krymper och det är inte på skoj">
-        <h2>Vår hjärna krymper och det är inte på skoj</h2>
-      </a>
-      <p>Forskare varnar: intelligensen minskar i västvärlden. Och det är inte TikToks fel. Eller ja… kanske lite. Perfect Weekend tar hjälp av Sveriges mest hjärnstarka psykiater för att förstå varför vi blir…</p>
+    <article class="tile tile-1">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-187-1024x512.png" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/halsa/var-hjarna-krymper-och-det-ar-inte-pa-skoj/">Vår hjärna krymper och det är inte på skoj</a></h2>
+      <div class="meta">Thu, 31 Jul 2025 06:14:36 +0000</div>
+      <p>Forskare varnar: intelligensen minskar i västvärlden. Och det är inte TikToks fel. Eller ja… kanske lite. Perfect Weekend tar hjälp av Sveriges mest hjärnstarka psykiater för att förstå varför vi blir dummare – och vad som är den första varningsflaggan. Från stegräknare till intellektuell kris Det började som ett framgångssaga. Under hela 1900-talet blev varje […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/vattenmelon-varje-dag-har-ar-riskerna-du-bor-kanna-till/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg" alt="Vattenmelon varje dag? Här är riskerna du bör känna till">
-        <h2>Vattenmelon varje dag? Här är riskerna du bör känna till</h2>
-      </a>
-      <p>Vattenmelon är svalkande och nyttigt men att äta den varje dag kan få oväntade konsekvenser för din hälsa. Här är riskerna du bör känna till. Vattenmelon är för många en självklar sommarfavorit. Men a…</p>
+    <article class="tile tile-2">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/moshe-silberberg-Y0NrvHW624k-unsplash-1024x512.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/vattenmelon-varje-dag-har-ar-riskerna-du-bor-kanna-till/">Vattenmelon varje dag? Här är riskerna du bör känna till</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 17:52:05 +0000</div>
+      <p>Vattenmelon är svalkande och nyttigt men att äta den varje dag kan få oväntade konsekvenser för din hälsa. Här är riskerna du bör känna till. Vattenmelon är för många en självklar sommarfavorit. Men att äta frukten varje dag kan leda till oväntade biverkningar, enligt hälsosajter och dietister, som varnar för allt från magproblem till näringsobalanser. […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/spanien-gor-storstadning-pa-airbnb-tiotusentals-annonser-borta/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="Spanien gör storstädning på Airbnb – tiotusentals annonser borta">
-        <h2>Spanien gör storstädning på Airbnb – tiotusentals annonser borta</h2>
-      </a>
-      <p>Spanien skärper tonen mot korttidsuthyrningar. Tiotusentals annonser på Airbnb har redan försvunnit – och fler kan snart ryka. Spaniens regering trappar nu upp insatsen mot olagliga uthyrningar. Airbn…</p>
+    <article class="tile tile-3">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/06/dorian-d1-aX5NLrKgRBc-unsplash-1024x512.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/spanien-gor-storstadning-pa-airbnb-tiotusentals-annonser-borta/">Spanien gör storstädning på Airbnb – tiotusentals annonser borta</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 15:07:36 +0000</div>
+      <p>Spanien skärper tonen mot korttidsuthyrningar. Tiotusentals annonser på Airbnb har redan försvunnit – och fler kan snart ryka. Spaniens regering trappar nu upp insatsen mot olagliga uthyrningar. Airbnb granskas hårdare än någonsin när myndigheterna försöker återta kontrollen över bostadsmarknaden. Missa inte: Forskare upptäcker plötsligt skifte – då accelererar åldrandet. Dagens PS 65 000 annonser borta i […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/sa-smakar-sverige-enligt-svenskarna/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlR446SjhacZk-nh-1024x512.jpg" alt="Så smakar Sverige, enligt svenskarna">
-        <h2>Så smakar Sverige, enligt svenskarna</h2>
-      </a>
-      <p>Hur det ser ut har vi väl koll på, men hur smakar och doftar egentligen Sverige? Nu har Ica kartlagt det och låtit svenskarna uttala sig. Denna sommar, som rullar på för fullt, berättar Ica att man ka…</p>
+    <article class="tile tile-4">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlR446SjhacZk-nh-1024x512.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/sa-smakar-sverige-enligt-svenskarna/">Så smakar Sverige, enligt svenskarna</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 09:44:49 +0000</div>
+      <p>Hur det ser ut har vi väl koll på, men hur smakar och doftar egentligen Sverige? Nu har Ica kartlagt det och låtit svenskarna uttala sig. Denna sommar, som rullar på för fullt, berättar Ica att man kartlagt vilka smaker som svenskar tycker representerar vårt land bäst. Högst upp på topplistan: rotfrukter, vilda bär och […]</p>
     </article>
   
-    <article class="card feature-center">
-      <a href="https://www.dagensps.se/weekend/sa-paverkar-kaffe-ditt-blodsocker-varje-dag/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlREqFE4NWTPU-nh-1024x512.jpg" alt="Så påverkar kaffe ditt blodsocker varje dag">
-        <h2>Så påverkar kaffe ditt blodsocker varje dag</h2>
-      </a>
-      <p>Kaffe är svenskarnas favorit under fikapausen och arbetsdagarna rinner det ner tolv miljoner koppar. Men vad händer med blodsockret? Svenskarna dricker näst mest kaffe per person i världen och drycken…</p>
+    <article class="tile tile-5">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/sdlREqFE4NWTPU-nh-1024x512.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/sa-paverkar-kaffe-ditt-blodsocker-varje-dag/">Så påverkar kaffe ditt blodsocker varje dag</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 08:05:04 +0000</div>
+      <p>Kaffe är svenskarnas favorit under fikapausen och arbetsdagarna rinner det ner tolv miljoner koppar. Men vad händer med blodsockret? Svenskarna dricker näst mest kaffe per person i världen och drycken har blivit ett socialt och kulturellt fenomen. Samtidigt visar forskning att kaffet kan ge snabba blodsockersvängningar, men också en oväntad skyddseffekt. Missa inte: Forskare upptäcker […]</p>
     </article>
   
-    <article class="card feature-center">
-      <a href="https://www.dagensps.se/weekend/resor/sa-lurar-resenarer-flygbolagen-med-falska-annonser/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2022/11/flyg1-1024x576.jpg" alt="Så lurar resenärer flygbolagen – med falska annonser…">
-        <h2>Så lurar resenärer flygbolagen – med falska annonser…</h2>
-      </a>
-      <p>När handbagaget kostar mer än flygbiljetten tar desperationen över. Då kommer kreativiteten mot flygbolagen fram. Nu använder resenärer en klädsajt som bagageförmedling – och det fungerar förvånansvär…</p>
+    <article class="tile tile-6">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2022/11/flyg1-1024x576.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/resor/sa-lurar-resenarer-flygbolagen-med-falska-annonser/">Så lurar resenärer flygbolagen – med falska annonser…</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 07:08:19 +0000</div>
+      <p>När handbagaget kostar mer än flygbiljetten tar desperationen över. Då kommer kreativiteten mot flygbolagen fram. Nu använder resenärer en klädsajt som bagageförmedling – och det fungerar förvånansvärt bra. Perfect Weekend reder ut semesterknepet som får flygbolagens avgiftsmaskin att stanna upp. En fejkad väska för att undvika avgiften hos flygbolagen Att betala 60 €, 90 € eller till […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/resor/resenarens-hamnd-pa-lagprisbolaget-blev-viral-hjalte/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/aI4u7lPt-Namnlos-design-2-1024x512.png" alt="Resenärens hämnd på lågprisbolaget – blev viral hjälte">
-        <h2>Resenärens hämnd på lågprisbolaget – blev viral hjälte</h2>
-      </a>
-      <p>När lågprisbolaget ville ta extra betalt för en väska som påstods vara för stor, vägrade Arina att vika sig. Med brutal precision och mycket kraft blev hon en TikTok-stjärna på kuppen. Perfect Weekend…</p>
+    <article class="tile tile-7">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/aI4u7lPt-Namnlos-design-2-1024x512.png" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/resor/resenarens-hamnd-pa-lagprisbolaget-blev-viral-hjalte/">Resenärens hämnd på lågprisbolaget – blev viral hjälte</a></h2>
+      <div class="meta">Wed, 30 Jul 2025 06:38:59 +0000</div>
+      <p>När lågprisbolaget ville ta extra betalt för en väska som påstods vara för stor, vägrade Arina att vika sig. Med brutal precision och mycket kraft blev hon en TikTok-stjärna på kuppen. Perfect Weekend har hela historien om sommarens mest omtalade väska. Sommaren 2025 är en varm säsong för flygbranschens mest hatade moment: handbagagekontrollerna. Men när […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg" alt="Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång">
-        <h2>Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång</h2>
-      </a>
-      <p>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång. En ny jättestudie visar att det går att sakta ner den kognitiv…</p>
+    <article class="tile tile-8">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/cecilia-par-YUg5RwlnMKc-unsplash-1024x512.jpg" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/forskare-dessa-livsstilsval-kan-bromsa-kognitiv-nedgang/">Forskare: Dessa livsstilsval kan bromsa kognitiv nedgång</a></h2>
+      <div class="meta">Tue, 29 Jul 2025 11:06:45 +0000</div>
+      <p>Forskarna bakom en omfattande amerikansk studie har identifierat flera livsstilsfaktorer som kan hjälpa till att bromsa kognitiv nedgång. En ny jättestudie visar att det går att sakta ner den kognitiva nedgången som ofta kommer med åldern. Och det handlar varken om piller eller dyra behandlingar. Missa inte: 4 000 år gammalt egyptiskt fynd avslöjar okänd […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/noje-underhallning/hollywood-nej-tack-vi-flyger-till-irland-i-stallet/" target="_blank">
-        <img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F1-161.png&#038;w=1200&#038;q=75" alt="“Hollywood? Nej tack. Vi flyger till Irland i stället”">
-        <h2>“Hollywood? Nej tack. Vi flyger till Irland i stället”</h2>
-      </a>
-      <p>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland. När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett…</p>
+    <article class="tile tile-9">
+      <img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F1-161.png&#038;w=1200&#038;q=75" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/noje-underhallning/hollywood-nej-tack-vi-flyger-till-irland-i-stallet/">“Hollywood? Nej tack. Vi flyger till Irland i stället”</a></h2>
+      <div class="meta">Tue, 29 Jul 2025 06:20:46 +0000</div>
+      <p>Perfect Weekend förklarar varför världens största filmstjärnor numera packar regnjackan och drar till Galway i Irland. När Paul Mescal drömmer om nästa roll, då gör han det till ljudet av regn mot ett fönster i västra Irland. Och han är inte ensam. Filmvärlden har fått ett nytt älsklingsland – och det är inte längre Kalifornien. […]</p>
     </article>
   
-    <article class="card">
-      <a href="https://www.dagensps.se/weekend/resor/hejda-till-100-millilitersregeln-i-din-sakerhetskontroll/" target="_blank">
-        <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png" alt="Snart får du ta med två liter vätska i handbagaget">
-        <h2>Snart får du ta med två liter vätska i handbagaget</h2>
-      </a>
-      <p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan. Framtiden är här – åtminstone i Roms säkerhetskontroll De…</p>
+    <article class="tile tile-10">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-180-1024x512.png" alt="" />
+      <h2><a href="https://www.dagensps.se/weekend/resor/hejda-till-100-millilitersregeln-i-din-sakerhetskontroll/">Snart får du ta med två liter vätska i handbagaget</a></h2>
+      <div class="meta">Tue, 29 Jul 2025 05:57:15 +0000</div>
+      <p>Perfect Weekend reder ut framtidens säkerhetskontroll – och vad det betyder för din nästa weekendresa med parfym, solkräm och rödvin i väskan. Framtiden är här – åtminstone i Roms säkerhetskontroll Den ökända 100-millilitersgränsen för vätskor i handbagaget är snart ett minne blott. EU håller just nu på att fasa ut regeln – förutsatt att flygplatsen […]</p>
     </article>
   
   </main>
