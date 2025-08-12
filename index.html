@@ -5,174 +5,207 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Perfect Weekend — e‑magazine</title>
 <style>
-  :root{
-    --bg:#e9d7cd; --ink:#222; --muted:#6b6b6b;
-    --panel:#ffffff; --peach:#f6e3d8;
-    --blue:#3f6ab6; --blue-d:#244a87; --rail:#d6c3b8; --shadow: 0 2px 6px rgba(0,0,0,.06);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
-  body{font:16px/1.5 "Georgia","Times New Roman",serif}
-  .mast{background:var(--blue);color:#fff;padding:12px 18px;font:700 18px/1 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
-  .frame{max-width:1120px;margin:18px auto 28px;border:6px solid var(--rail);background:#fff0;padding:22px 22px 26px}
-  .grid{display:grid;grid-template-columns:290px 1fr 1fr;gap:22px}
-  .note{background:var(--peach);border:1px solid var(--rail);box-shadow:var(--shadow);padding:12px;margin:0 0 18px}
-  .note img{display:block;width:100%;height:140px;object-fit:cover;border:1px solid var(--rail);background:#fff;margin:0 0 8px 0}
-  .note h4{margin:2px 0 6px;font:700 13px/1.25 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#b40d24;letter-spacing:.01em}
-  .note .meta{color:var(--muted);font-size:12px;margin-bottom:6px}
-  .note p{font-size:13px;margin:0}
-  .note a{color:#111;text-decoration:none;border-bottom:1px solid #111}
-  .note a:hover{opacity:.8}
-  .card{background:var(--panel);border:1px solid var(--rail);box-shadow:var(--shadow);margin:0 0 22px}
-  .card .media{position:relative;background:#f7f7f7;border-bottom:1px solid var(--rail)}
-  .card .media img{width:100%;height:320px;object-fit:cover;display:block}
-  .card .pad{padding:14px 16px 16px}
-  .kicker{font:800 11px/1 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.12em;color:#fff;background:var(--blue);display:inline-block;padding:5px 8px;border-radius:3px;margin:0 0 10px}
-  .card h2{font:800 24px/1.18 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--blue-d);margin:6px 0 10px}
-  .card h3{font:800 18px/1.22 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--blue-d);margin:0 0 8px}
-  .meta{color:var(--muted);font-size:12px;margin-bottom:6px}
-  .card p{margin:0}
-  .card a{color:inherit;text-decoration:none}
-  .card a:hover{opacity:.9}
-  .feature .media img{height:420px}
-  .feature h2{font-size:28px}
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:6px}
-  .duo .media img{height:220px}
-  .band{background:var(--blue);color:#fff;display:inline-block;padding:6px 10px;font:800 12px/1 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;letter-spacing:.18em;border-radius:3px;margin:0 0 12px}
-  .footer{margin-top:8px;color:var(--muted);font-size:12px;text-align:right}
-  @media (max-width:1150px){.frame{margin:12px auto;border-width:4px;padding:16px}.grid{grid-template-columns:260px 1fr 1fr;gap:16px}.card .media img{height:280px}.feature .media img{height:360px}}
-  @media (max-width:920px){.grid{grid-template-columns:1fr}.note{max-width:520px}.card .media img{height:260px}.feature .media img{height:320px}}
+:root{
+  --bg:#f6efe9;          /* warm neutral background */
+  --ink:#222;            /* body text */
+  --muted:#6b6b6b;       /* meta */
+  --paper:#ffffff;       /* white panels */
+  --peach:#f6e3d8;       /* left column panels */
+  --blue:#3f6ab6;        /* top bar + small labels */
+  --blue-d:#244a87;      /* darker blue for headings */
+  --rail:#c6c3b8;        /* thin frame/border */
+  --shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+/* page */
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+
+/* top ribbon */
+.ticker{background:#111;color:#e9e9e9;padding:.5rem 2vw;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* blue section label (was "INNOVATORS") */
+.band{background:var(--blue);color:#fff;padding:.6rem 2vw;font-weight:700;letter-spacing:.04em}
+.band span{font-size:.95rem}
+
+/* frame (landscape magazine look) */
+.frame{
+  max-width:1320px;
+  margin:18px auto 24px;
+  padding:24px;
+  background:var(--paper);
+  border:1px solid var(--rail);
+  box-shadow:var(--shadow);
+}
+
+/* grid: desktop 3 cols, tablet 2, phone 1 */
+.grid{
+  display:grid;
+  grid-template-columns: 290px 1fr 1fr;
+  gap:22px;
+}
+@media (max-width:1100px){
+  .grid{ grid-template-columns: 1fr 1fr; }
+  .rail{ display:none; }
+}
+@media (max-width:720px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+/* left rail column (small stacked cards) */
+.rail{display:flex;flex-direction:column;gap:18px}
+.note{
+  background:var(--peach);
+  border:1px solid var(--rail);
+  padding:12px;
+  box-shadow:var(--shadow);
+}
+.note .thumb{
+  width:100%;height:140px;object-fit:cover;background:#ddd;margin:0 0 .5rem 0;border:1px solid var(--rail)
+}
+.note h4{margin:.1rem 0 .25rem;font-size:1rem;line-height:1.2}
+.meta{color:var(--muted);font-size:.82rem;margin:.15rem 0 .4rem}
+
+/* main hero + right column list */
+.hero{
+  background:var(--paper);
+  border:1px solid var(--rail);
+  box-shadow:var(--shadow);
+  padding:12px;
+}
+.hero img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rail);background:#ddd
+}
+.hero h1{font-size:2.1rem;line-height:1.15;margin:.8rem 0 .35rem;font-weight:800;letter-spacing:.01em}
+.hero p{color:#444;margin:.35rem 0 .2rem}
+
+/* right column stack */
+.stack{display:flex;flex-direction:column;gap:18px}
+.tile{
+  display:grid;grid-template-columns: 1fr;gap:.6rem;
+  border:1px solid var(--rail);box-shadow:var(--shadow);padding:10px;background:var(--paper)
+}
+.tile img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--rail);background:#ddd}
+.tile h3{margin:0;font-size:1.25rem;line-height:1.2}
+.tile .meta{margin-top:.1rem}
+
+/* masthead row under the blue band */
+.mast{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 2vw;
+  background:var(--paper);
+  border-bottom:1px solid var(--rail);
+  box-shadow:0 1px 0 rgba(0,0,0,.025);
+}
+.mast .brand{font-size:1.05rem;color:#333;font-weight:700;letter-spacing:.02em}
+.mast .date{font-size:1.1rem;color:#000;font-weight:800}
+
+/* links */
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* print (A4 landscape) */
+@page{ size:A4 landscape; margin:10mm; }
+@media print{
+  .ticker,.mast{display:none}
+  body{background:#fff}
+  .frame{box-shadow:none;border:0;padding:0}
+}
 </style>
 </head>
 <body>
-  <div class="mast">INNOVATORS</div>
-  <div class="frame">
-    <div class="grid">
-      <div>
-        <div class="band">PERFECT&nbsp;WEEKEND</div>
-        
-          <article class="note">
-            <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-217-1024x512.png" alt="">
-            <h4><a href="https://www.dagensps.se/weekend/resor/kryssningsfartyg-blev-sjukstuga-pa-oppet-hav/" target="_blank" rel="noopener">Kryssningsfartyg blev sjukstuga på öppet hav</a></h4>
-            <div class="meta">tis 12 aug. 2025</div>
-            <p>Lyxig buffé, salt havsbris och magknip i världsklass. För över hundra passagerare på ett kryssningsfartyg förvandlades drömresan snabbt till en kamp om närmaste toalett. Kryssningsdrömmen som kapsejsade i toalettköer Det skulle vara en vecka av solnedgångar, drinkar med paraply och havsbris i håret. I stället blev 134 passagerare på kryssningsfartyget Navigator of the Seas magsjuka efter att ha lämnat Los Angeles den 4 juli. När skeppet återvände en vecka senare var sjukrapporten tydlig: diarré, kräkningar och magk…</p>
-          </article>
-        
-          <article class="note">
-            <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-148-1024x512.png" alt="">
-            <h4><a href="https://www.dagensps.se/weekend/resor/slutladdat-ombord-flygbolag-infor-stenharda-batteriregler/" target="_blank" rel="noopener">Slutladdat ombord – flygbolag inför stenhårda batteriregler</a></h4>
-            <div class="meta">tis 12 aug. 2025</div>
-            <p>Från 1 oktober får passagerare på ett av världens största flygbolag vinka adjö till laddning i luften. Powerbanks ska vara avstängda, ligga under sätet och får inte ens användas för att ge mobilen en sista energikick – allt i säkerhetens namn efter flera bränder ombord världen över. Branddramat som fick flygbolagen att vakna I januari i år började en powerbank brinna på ett Air Busan-plan i Sydkorea. Planet stod fortfarande på marken, men skadorna var allvarliga: 27 personer fick föras till sjukhus. Händelsen blev…</p>
-          </article>
-        
-          <article class="note">
-            <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/5-133-1024x512.png" alt="">
-            <h4><a href="https://www.dagensps.se/weekend/halsa/sa-farligt-ar-det-att-dricka-vatten-som-legat-och-jast-i-bilen/" target="_blank" rel="noopener">Så farligt är det att dricka vatten som legat och jäst i bilen</a></h4>
-            <div class="meta">tis 12 aug. 2025</div>
-            <p>Att ta en klunk vatten som stått i bilen i flera dagar kan kännas som en liten synd i sommarvärmen – men forskarna kallar det snarare ett biologiskt lotteri. Värmen och solljuset förvandlar flaskan till en bakterieodling med en skvätt kemisk cocktail på köpet. En perfekt miljö för små otäckingar Problemet är inte bara att vattnet blir ljummet och tråkigt. Har du redan öppnat flaskan har du bjudit in bakterier och mögel från munnen, händerna och luften. I en bil som snabbt blir varmare än utomhusluften förökar sig d…</p>
-          </article>
-        
-      </div>
-      <div>
-        <article class="card feature">
-          <div class="media"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/11/Ryanair-1024x512.jpg" alt=""></div>
-          <div class="pad">
-            <span class="kicker">FEATURE</span>
-            <h2><a href="https://www.dagensps.se/weekend/resor/strejkkaos-hotar-semestern-svenska-resenarer-fastnar-i-spanien/" target="_blank" rel="noopener">Strejkkaos hotar semestern – svenska resenärer fastnar i Spanien</a></h2>
-            <div class="meta">tis 12 aug. 2025</div>
-            <p>Det är högsäsong för solresor och charterflyg, men nu hotar dubbla strejker att ställa till det för svenska semesterfirare. I Spanien har två stora markservicebolag utlyst arbetsnedläggelser vid flera av landets mest populära semesterflygplatser – samtidigt som svenska charterbolag nyligen har varit indragna i egna konfliktvarsel på hemmaplan. Två strejker i Spanien – samma huvudvärk Först ut: Menzies, eller Menzia Group som de kallar sig i Spanien. 600 anställda vid fem flygplatser – Barcelona-El Prat, Alicante-El…</p>
-          </div>
+
+<!-- Simple ticker with first three titles -->
+<div class="ticker">Kryssningsfartyg blev sjukstuga på öppet hav  |  Slutladdat ombord – flygbolag inför stenhårda batteriregler  |  Så farligt är det att dricka vatten som legat och jäst i bilen</div>
+
+<!-- BLUE LABEL: now "Perfect Weekend" -->
+<div class="band"><span>PERFECT WEEKEND</span></div>
+
+<!-- MASTHEAD ROW: big text is release date -->
+<div class="mast">
+  <div class="brand">Perfect Weekend — e‑magazine</div>
+  <div class="date">12 aug. 2025</div>
+</div>
+
+<div class="frame">
+  <div class="grid">
+
+    <!-- LEFT RAIL: 4 compact notes (items 6–9 or fallbacks) -->
+    <aside class="rail">
+      
+        <article class="note">
+          <img class="thumb" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/05/raja-sen-FrjdQhKSWb0-unsplash-1024x512.jpg" alt="">
+          <h4><a href="https://www.dagensps.se/weekend/resor/har-ar-varldens-20-basta-stader-puh-stockholm-ar-med/" target="_blank" rel="noopener noreferrer">Här är världens 20 bästa städer – puh, Stockholm är med</a></h4>
+          <div class="meta">11 aug. 2025</div>
+          <div class="snip">Vad gör en stad till världens bästa städer? Är det maten, shoppingen, stränderna eller känslan av att bara vilja stanna lite längre? Här är listan som tar dig från tapas i Valencia till pingviner i Kapstaden – med ett välförtjänt stopp i Stockholm.”
+Källa är C …</div>
         </article>
         
-          <article class="card">
-            
-            <div class="pad">
-              <span class="kicker">BUSINESS</span>
-              <h3><a href="https://www.dagensps.se/weekend/halsa/glom-ozempic-tre-dieter-som-ger-battre-effekt/" target="_blank" rel="noopener">Glöm Ozempic – tre dieter som ger bättre effekt</a></h3>
-              <div class="meta">tis 12 aug. 2025</div>
-              <p>Vill du gå ner i vikt utan några biverkningar? Här kommer tre dieter som ger samma effekt som Ozempic. Trenden med viktminskningsläkemedel sveper fram över världen. Allt fler av oss använder numera läkemedel som Mounjaro, Wegovy och Ozempic för att snabbt skala av kilona kring midjan. Sociala medier är viktiga Sociala medier har givetvis spelat en stor del i trenden där användare lägger upp bilder och videor på deras förvandlingar från överviktiga till smala. Precis som allt annat nuförtiden ska det gå snabbt att g…</p>
-            </div>
-          </article>
+        <article class="note">
+          <img class="thumb" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-215-1024x512.png" alt="">
+          <h4><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-tidvattenschock-i-piraternas-stad/" target="_blank" rel="noopener noreferrer">Viggos resdagbok: Tidvattenschock i piraternas stad</a></h4>
+          <div class="meta">11 aug. 2025</div>
+          <div class="snip">Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike. Saint-Malo bjuder på 12 meters magi, granitstarka stadsmurar och en historia fylld av välklädda pirater. Vi kom för musslorna, men fick plastglasvin, poddar och en lektion i …</div>
+        </article>
         
-          <article class="card">
-            <div class="media"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/05/allnipponairways-1024x512.jpg" alt=""></div>
-            <div class="pad">
-              <span class="kicker">WEEKEND</span>
-              <h3><a href="https://www.dagensps.se/weekend/varldens-flygkata-nationer-och-vart-alla-ska-enligt-iata/" target="_blank" rel="noopener">Världens mest flygkåta nationer – och vart alla ska enligt IATA</a></h3>
-              <div class="meta">mån 11 aug. 2025</div>
-              <p>Amerikanerna leder. Kineserna jagar. Britterna flyr till solen. Det är kontentan av en rapport från IATA för 2024 – flygbolagens egen mästerskapstabell. Full av siffror, men roligare än att försöka tyda en SAS-voucher. USA toppar – med råge USA landar på förstaplatsen med 876 miljoner passagerare 2024. Det är nästan fyra gånger fler än Indien – trots att indierna är över en miljard fler. Hemligheten? Amerikaner tar flyget till sin grannes bröllop, till svärmor och till närmaste Starbucks. Kina är tvåa med 741 miljo…</p>
-            </div>
-          </article>
-        
-          <article class="card">
-            <div class="media"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/06/5-26-1024x576.png" alt=""></div>
-            <div class="pad">
-              <span class="kicker">BUSINESS</span>
-              <h3><a href="https://www.dagensps.se/weekend/resor/har-ar-varldens-20-basta-stader-puh-stockholm-ar-med/" target="_blank" rel="noopener">Här är världens 20 bästa städer – puh, Stockholm är med</a></h3>
-              <div class="meta">mån 11 aug. 2025</div>
-              <p>Vad gör en stad till världens bästa städer? Är det maten, shoppingen, stränderna eller känslan av att bara vilja stanna lite längre? Här är listan som tar dig från tapas i Valencia till pingviner i Kapstaden – med ett välförtjänt stopp i Stockholm.&#8221; Källa är Condé Nast. Läsarna har röstat fram sina favoritstäder – och listan är en blandning av kultur, shopping, mat, fest och stränder med pingviner. Utsikt över Manhattan – lika bra från Brooklyn som från Empire State Building. (Foto: Canva) 20. New York – USA…</p>
-            </div>
-          </article>
-        
-      </div>
-      <div>
-        
-          <article class="card">
-            <div class="media"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-215-1024x512.png" alt=""></div>
-            <div class="pad">
-              <span class="kicker">TRAVEL</span>
-              <h3><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-tidvattenschock-i-piraternas-stad/" target="_blank" rel="noopener">Viggos resdagbok: Tidvattenschock i piraternas stad</a></h3>
-              <div class="meta">mån 11 aug. 2025</div>
-              <p>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike. Saint-Malo bjuder på 12 meters magi, granitstarka stadsmurar och en historia fylld av välklädda pirater. Vi kom för musslorna, men fick plastglasvin, poddar och en lektion i att ta tidvattnet på allvar. Strandliv med 12 meters magi Igår var det strandliv igen. Att ligga vid en strand och uppleva tolv meters tidvatten för första gången är overkligt. I vår lilla badvik var allt vatten borta, så när som på en liten pöl, och bara någ…</p>
-            </div>
-          </article>
-        
-          <article class="card">
-            
-            <div class="pad">
-              <span class="kicker">TECH</span>
-              <h3><a href="https://www.dagensps.se/weekend/resor/flygjatte-glomde-tva-blinda-passagerare-kunde-inte-se-informationen/" target="_blank" rel="noopener">Flygjätte glömde två blinda passagerare kvar på marken</a></h3>
-              <div class="meta">mån 11 aug. 2025</div>
-              <p>Två blinda passagerare glömdes kvar på flygplatsen sedan deras flygplan hade fått ny avgångsinformation som kvinnorna inte hade kunnat läsa. Nu vill resenärerna se en skärpning hos flygbolagen som bör ta bättre hänsyn till blinda. De båda kvinnliga vännerna Camille Tate och Sherri Brun hade bokat ett flyg från New Orleans till Orlando med den amerikanska flygjätten Southwest Airlines i mitten av juli. Flygbolaget glömde blinda passagerare Flyget var dock försenat med fem timmar uppger The Guardian , men det var ing…</p>
-            </div>
-          </article>
-        
-          <article class="card">
-            <div class="media"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-200-1024x512.png" alt=""></div>
-            <div class="pad">
-              <span class="kicker">TRAVEL</span>
-              <h3><a href="https://www.dagensps.se/weekend/vill-du-bli-100-borja-redan-som-femaring/" target="_blank" rel="noopener">Så kan du bli 100 år: Börja nu, eller när du fyller 5…</a></h3>
-              <div class="meta">sön 10 aug. 2025</div>
-              <p>Det är aldrig för sent att bromsa åldrandet. Men enligt forskningen är det ännu bättre att börja före puberteten. I en ny Perfect Weekend-artikel följer vi forskarna som jagar evig ungdom – med hjälp av rotfrukter, rörelse och rödvinsförbud Det biologiska åldrandet kan bromsas – men du måste börja i tid Det är ingen nyhet att vi åldras. Men frågan är hur – och i vilken takt. Enligt Peter Stenvinkel i DN , överläkare och professor på Karolinska institutet, handlar åldrande inte bara om år på jorden. Det handlar om h…</p>
-            </div>
-          </article>
-        
-        <div class="duo">
+        <article class="note">
           
-            <article class="card">
-              
-              <div class="pad">
-                <span class="kicker">INSIDE</span>
-                <h3><a href="#" target="_blank" rel="noopener">—</a></h3>
-                <div class="meta"></div>
-                <p></p>
-              </div>
-            </article>
+          <h4><a href="https://www.dagensps.se/weekend/resor/flygjatte-glomde-tva-blinda-passagerare-kunde-inte-se-informationen/" target="_blank" rel="noopener noreferrer">Flygjätte glömde två blinda passagerare kvar på marken</a></h4>
+          <div class="meta">11 aug. 2025</div>
+          <div class="snip">Två blinda passagerare glömdes kvar på flygplatsen sedan deras flygplan hade fått ny avgångsinformation som kvinnorna inte hade kunnat läsa. Nu vill resenärerna se en skärpning hos flygbolagen som bör ta bättre hänsyn till blinda.
+De båda kvinnliga vännerna Ca …</div>
+        </article>
+        
+        <article class="note">
+          <img class="thumb" src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-200-1024x512.png" alt="">
+          <h4><a href="https://www.dagensps.se/weekend/vill-du-bli-100-borja-redan-som-femaring/" target="_blank" rel="noopener noreferrer">Så kan du bli 100 år: Börja nu, eller när du fyller 5…</a></h4>
+          <div class="meta">10 aug. 2025</div>
+          <div class="snip">Det är aldrig för sent att bromsa åldrandet. Men enligt forskningen är det ännu bättre att börja före puberteten. I en ny Perfect Weekend-artikel följer vi forskarna som jagar evig ungdom – med hjälp av rotfrukter, rörelse och rödvinsförbud
+Det biologiska åldr …</div>
+        </article>
+        
+    </aside>
+
+    <!-- CENTER: HERO (item 0) -->
+    <main class="hero">
+      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-217-1024x512.png" alt="">
+      <h1><a href="https://www.dagensps.se/weekend/resor/kryssningsfartyg-blev-sjukstuga-pa-oppet-hav/" target="_blank" rel="noopener noreferrer">Kryssningsfartyg blev sjukstuga på öppet hav</a></h1>
+      <div class="meta">12 aug. 2025</div>
+      <p>Lyxig buffé, salt havsbris och magknip i världsklass. För över hundra passagerare på ett kryssningsfartyg förvandlades drömresan snabbt till en kamp om närmaste toalett.
+Kryssningsdrömmen som kapsejsade i toalettköer
+Det skulle vara en vecka av solnedgångar, d …</p>
+    </main>
+
+    <!-- RIGHT: 2 top tiles (1–2) + 2 below (3–4) -->
+    <section class="stack">
+      
+        <article class="tile">
+          <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-148-1024x512.png" alt="">
+          <h3><a href="https://www.dagensps.se/weekend/resor/slutladdat-ombord-flygbolag-infor-stenharda-batteriregler/" target="_blank" rel="noopener noreferrer">Slutladdat ombord – flygbolag inför stenhårda batteriregler</a></h3>
+          <div class="meta">12 aug. 2025</div>
+        </article>
+      
+        <article class="tile">
+          <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/5-133-1024x512.png" alt="">
+          <h3><a href="https://www.dagensps.se/weekend/halsa/sa-farligt-ar-det-att-dricka-vatten-som-legat-och-jast-i-bilen/" target="_blank" rel="noopener noreferrer">Så farligt är det att dricka vatten som legat och jäst i bilen</a></h3>
+          <div class="meta">12 aug. 2025</div>
+        </article>
+      
+        <article class="tile">
+          <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/05/chris-brignola-XHwTbPKn4mE-unsplash-1024x512.jpg" alt="">
+          <h3><a href="https://www.dagensps.se/weekend/resor/strejkkaos-hotar-semestern-svenska-resenarer-fastnar-i-spanien/" target="_blank" rel="noopener noreferrer">Strejkkaos hotar semestern – svenska resenärer fastnar i Spanien</a></h3>
+          <div class="meta">12 aug. 2025</div>
+        </article>
+      
+        <article class="tile">
           
-            <article class="card">
-              
-              <div class="pad">
-                <span class="kicker">INSIDE</span>
-                <h3><a href="#" target="_blank" rel="noopener">—</a></h3>
-                <div class="meta"></div>
-                <p></p>
-              </div>
-            </article>
-          
-        </div>
-      </div>
-    </div>
-    <div class="footer">Auto‑generated by n8n — 2025-08-12 09:25:54</div>
+          <h3><a href="https://www.dagensps.se/weekend/halsa/glom-ozempic-tre-dieter-som-ger-battre-effekt/" target="_blank" rel="noopener noreferrer">Glöm Ozempic – tre dieter som ger bättre effekt</a></h3>
+          <div class="meta">12 aug. 2025</div>
+        </article>
+      
+    </section>
+
   </div>
+</div>
+
 </body>
 </html>
