@@ -1,195 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>e‑Magazine</title>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>e-Magazine — Perfect Weekend</title>
 <style>
-  :root{
-    --page-bg:#f7f4f0;         /* warm newsprint */
-    --ink:#222;                /* body text */
-    --muted:#6b6b6b;           /* notes */
-    --ribbon:#d64c38;          /* FT-ish rubric (red/orange) */
-    --mast:#e8d8d0;            /* masthead tint */
-    --blue:#116aa7;            /* highlight box blue (for a couple of modules) */
-    --hair:#e2ddd8;            /* hairlines */
+  /* Landscape layout framework */
+  @page { size: A4 landscape; margin: 1cm; }
+  body { margin:0; padding:0; background:#fdfaf6; font-family:Georgia, serif; color:#222; }
+  .mag-page { width:99vw; max-width:1660px; margin:30px auto; padding:20px; background:#fdfaf6; }
+  h2.title { font-family:'Roboto Condensed','__Roboto_52e2e0',sans-serif; font-size:28px; margin-bottom:6px; letter-spacing:.02em; }
+  .byline { font-size:14px; color:#555; margin-bottom:10px; }
+  .mag-art { column-span:all; margin-bottom:30px; }
+  .feature-img img { width:100%; height:auto; display:block; border-radius:12px; margin-bottom:12px; }
+  .body { column-count:3; column-gap:30px; font-size:16px; text-align:justify; }
+  .mag-art.no-image .body { column-count:2; }
+  .thumb { margin-top:14px; }
+  .thumb img { width:150px; border-radius:8px; float:right; margin-left:16px; }
+  .orig { margin-top:12px; font-size:14px; }
+  @media (max-width:1100px) {
+    .body { column-count:2; }
   }
-  @page { size: A4 landscape; margin: 10mm; }
-  @media print { 
-    body { background: white !important; }
-    .spread { box-shadow:none !important; }
+  @media (max-width:720px) {
+    .body { column-count:1; }
+    .feature-img img { border-radius:6px; }
   }
-  html,body{ height:100%; margin:0; }
-  body{
-    background:var(--page-bg);
-    color:var(--ink);
-    font-family: Georgia, "Times New Roman", serif;
-    line-height:1.35;
-  }
-  .spread{
-    max-width:1123px;
-    margin:24px auto;
-    padding:18px 18px 28px;
-    background:var(--page-bg);
-    box-shadow:0 4px 30px rgba(0,0,0,.08);
-    border:1px solid var(--hair);
-  }
-  .masthead{
-    display:flex; align-items:center; justify-content:center;
-    background:var(--mast);
-    border:1px solid var(--hair);
-    padding:10px 12px; margin-bottom:14px;
-  }
-  .masthead h1{
-    font-family: "Roboto Condensed","__Roboto_52e2e0", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-    letter-spacing:.04em;
-    font-weight:700;
-    font-size:34px;
-    margin:0;
-  }
-
-  .page{ 
-    break-after: page; 
-    background: transparent;
-    position: relative;
-    padding: 6px 6px 10px;
-    border-top: 6px solid var(--ribbon);
-    margin-bottom: 18px;
-  }
-  .ribbon{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:8px 4px 6px;
-    border-bottom:1px solid var(--hair);
-    margin-bottom:6px;
-  }
-  .ribbon .section{
-    color:var(--ribbon);
-    font-family:"Roboto Condensed","__Roboto_52e2e0", Arial, sans-serif;
-    text-transform:uppercase;
-    font-weight:700;
-    letter-spacing:.05em;
-    font-size:16px;
-  }
-  .ribbon .folio{
-    color:var(--muted);
-    font-size:13px;
-  }
-
-  /* three-column newspaper flow */
-  .columns{
-    column-count:3;
-    column-gap:22px;
-  }
-  @media (max-width: 1100px){
-    .columns{ column-count:2; }
-  }
-  @media (max-width: 720px){
-    .columns{ column-count:1; }
-  }
-
-  .art{
-    break-inside: avoid;
-    padding: 0 0 12px;
-    margin: 0 0 14px;
-    border-bottom:1px solid var(--hair);
-  }
-  .art.blue{
-    background: linear-gradient(180deg, rgba(17,106,167,.06), rgba(17,106,167,.03));
-    border:1px solid rgba(17,106,167,.2);
-    padding:10px 12px 12px;
-    border-radius:6px;
-  }
-  .hed{
-    font-family:"Roboto Condensed","__Roboto_52e2e0", Arial, sans-serif;
-    letter-spacing:.02em;
-    font-weight:700;
-    margin:0 0 6px;
-    line-height:1.1;
-  }
-  .hed-xl{ font-size:28px; }
-  .hed-lg{ font-size:22px; }
-  .hed-md{ font-size:18px; }
-
-  .meta{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:6px;
-  }
-  .art-fig{
-    margin:6px 0 8px;
-    break-inside: avoid;
-  }
-  .art-fig img{
-    width:100%; height:auto; display:block;
-    border-radius:8px;
-    border:1px solid var(--hair);
-  }
-  .body p{
-    margin: 0 0 8px;
-    text-align: justify;
-  }
-  .body h2, .body h3 { font-size: 16px; margin: 10px 0 6px; }
-  .body ul, .body ol { margin: 0 0 8px 18px; }
-  .body blockquote{
-    border-left:3px solid var(--hair);
-    margin:6px 0 8px; padding:2px 10px;
-    color:#444;
-    font-style:italic;
-  }
-  .body a{ color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(17,106,167,.35); }
-  .cont{ margin-top:6px; font-size:12px; color:var(--muted); }
-
-  /* sidebar "City talk" box (only page 1) */
-  .sidebar{
-    position: absolute;
-    right: 0; top: 60px;
-    width: 260px;
-    padding-left: 18px;
-    border-left: 1px solid var(--hair);
-  }
-  @media (max-width:1100px){ .sidebar{ position: static; width:auto; padding:0; border-left:none; margin-top:12px; } }
-  .chip{
-    background:#fff;
-    border:1px solid var(--hair);
-    border-radius:6px;
-    overflow:hidden;
-  }
-  .chip-head{
-    background:var(--mast);
-    color:#333;
-    font-family:"Roboto Condensed","__Roboto_52e2e0", Arial, sans-serif;
-    text-transform:uppercase; font-weight:700; letter-spacing:.05em;
-    padding:8px 10px; border-bottom:1px solid var(--hair);
-  }
-  .chip-list{ list-style:none; margin:0; padding:8px 10px; }
-  .chip-list li{ display:flex; gap:8px; align-items:flex-start; padding:6px 0; border-bottom:1px dashed var(--hair); }
-  .chip-list li:last-child{ border-bottom:none; }
-  .chip-list .dot{ width:6px; height:6px; border-radius:50%; background:var(--ribbon); position:relative; top:7px; flex:0 0 6px; }
 </style>
 </head>
 <body>
-  <main class="spread">
-    <div class="masthead"><h1>PERFECT WEEKEND</h1></div>
-
+  
+  <section class="mag-page" data-page="1">
     
-    <section class="page" data-page="1">
-      <header class="ribbon">
-        <div class="section">City view</div>
-        <div class="folio">Aug 13, 2025 · 1</div>
-      </header>
-      <div class="columns">
-        
-    <article class="art">
-      <h2 class="hed hed-xl">Viggos resdagbok i Dunkerque</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Tue, 12 Aug 2025 09:12:12 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-218-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på en bilsemester i Frankrike. Nu i Dunkerque där historien känns i sandkornen och där dagens drama mest handlar om vem som får sista platsen…</p>
+    <article class="mag-art ">
+      <h2 class="title">Viggos resdagbok i Dunkerque</h2>
+      <div class="byline">By Viggo Cavling · 12 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-218-1024x512.png" alt=""></figure>
+      <div class="body">
 <p><strong>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på en bilsemester i Frankrike.</strong> Nu i  Dunkerque där historien känns i sandkornen och där dagens drama mest handlar om vem som får sista platsen vid strandbaren.</p>
 
 
@@ -250,7 +95,7 @@
 
 
 
-<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</a>&lt;br><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-laddstopp-strandliv-och-krigshistoria-i-normandie/">Viggos resdagbok: Laddstopp, strandliv och krigshistoria i Normandie</a></p>
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</a><br><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-laddstopp-strandliv-och-krigshistoria-i-normandie/">Viggos resdagbok: Laddstopp, strandliv och krigshistoria i Normandie</a></p>
 
 
 
@@ -268,21 +113,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-dagbok-fran-en-bilsemester-i-europa-del-1/">Viggos dagbok från en bilsemester i Europa, del 1</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-i-dunkerque/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-i-dunkerque/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-lg">Kryssningsfartyg blev sjukstuga på öppet hav</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Tue, 12 Aug 2025 07:56:48 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-217-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Lyxig buffé, salt havsbris och magknip i världsklass. För över hundra passagerare på ett kryssningsfartyg förvandlades drömresan snabbt till en kamp om närmaste toalett. Kryssningsdrömmen som…</p>
+    <article class="mag-art ">
+      <h2 class="title">Kryssningsfartyg blev sjukstuga på öppet hav</h2>
+      <div class="byline">By Viggo Cavling · 12 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-217-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Lyxig buffé, salt havsbris och magknip i världsklass. För över hundra passagerare på ett kryssningsfartyg förvandlades drömresan snabbt till en kamp om närmaste toalett.</p>
 
 
@@ -355,21 +193,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/foretag/har-ar-varldens-storsta-kryssningsfartyg/">Här är världens största kryssningsfartyg</a> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/kryssningsfartyg-blev-sjukstuga-pa-oppet-hav/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/kryssningsfartyg-blev-sjukstuga-pa-oppet-hav/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art blue">
-      <h2 class="hed hed-lg">Slutladdat ombord – flygbolag inför stenhårda batteriregler</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Tue, 12 Aug 2025 07:36:15 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-148-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Från 1 oktober får passagerare på ett av världens största flygbolag vinka adjö till laddning i luften. Powerbanks ska vara avstängda, ligga under sätet och får inte ens användas för att ge mobilen en…</p>
+    <article class="mag-art ">
+      <h2 class="title">Slutladdat ombord – flygbolag inför stenhårda batteriregler</h2>
+      <div class="byline">By Viggo Cavling · 12 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-148-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Från 1 oktober får passagerare på ett av världens största flygbolag vinka adjö till laddning i luften. Powerbanks ska vara avstängda, ligga under sätet och får inte ens användas för att ge mobilen en sista energikick – allt i säkerhetens namn efter flera bränder ombord världen över.</p>
 
 
@@ -450,21 +281,14 @@
 
 <p><strong>Läs även: </strong><a href="https://www.dagensps.se/weekend/resor/strejkkaos-hotar-semestern-svenska-resenarer-fastnar-i-spanien/">Strejkkaos hotar semestern – svenska resenärer fastnar i Spanien</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/slutladdat-ombord-flygbolag-infor-stenharda-batteriregler/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/slutladdat-ombord-flygbolag-infor-stenharda-batteriregler/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Strejkkaos hotar semestern – svenska resenärer fastnar i Spanien</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Tue, 12 Aug 2025 06:58:36 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/11/Ryanair-1024x512.jpg" alt="">
-    </figure>
-      <div class="body"><p>Det är högsäsong för solresor och charterflyg, men nu hotar dubbla strejker att ställa till det för svenska semesterfirare. I Spanien har två stora markservicebolag utlyst arbetsnedläggelser vid…</p>
+    <article class="mag-art ">
+      <h2 class="title">Strejkkaos hotar semestern – svenska resenärer fastnar i Spanien</h2>
+      <div class="byline">By Viggo Cavling · 12 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2023/11/Ryanair-1024x512.jpg" alt=""></figure>
+      <div class="body">
 <p>Det är högsäsong för solresor och charterflyg, men nu hotar dubbla strejker att ställa till det för svenska semesterfirare. I Spanien har två stora markservicebolag utlyst arbetsnedläggelser vid flera av landets mest populära semesterflygplatser – samtidigt som svenska charterbolag nyligen har varit indragna i egna konfliktvarsel på hemmaplan.</p>
 
 
@@ -551,35 +375,28 @@
 
 
 
-<p><strong>Vilka flygplatser drabbas?</strong>&lt;br>Menzies: Barcelona-El Prat, Alicante-Elche, Palma de Mallorca, Málaga-Costa del Sol, Tenerife South.&lt;br>Azul Handling: Madrid, Barcelona, Málaga, Alicante, Palma, Ibiza, Sevilla, Girona, Lanzarote, Tenerife South, Santiago de Compostela med flera.</p>
+<p><strong>Vilka flygplatser drabbas?</strong><br>Menzies: Barcelona-El Prat, Alicante-Elche, Palma de Mallorca, Málaga-Costa del Sol, Tenerife South.<br>Azul Handling: Madrid, Barcelona, Málaga, Alicante, Palma, Ibiza, Sevilla, Girona, Lanzarote, Tenerife South, Santiago de Compostela med flera.</p>
 
 
 
-<p><strong>Vilka datum gäller?</strong>&lt;br>Menzies: 16, 17, 23, 24, 30, 31 augusti.&lt;br>Azul Handling: 15–17 augusti och därefter ons, fre, lör, sön till 31 december.</p>
+<p><strong>Vilka datum gäller?</strong><br>Menzies: 16, 17, 23, 24, 30, 31 augusti.<br>Azul Handling: 15–17 augusti och därefter ons, fre, lör, sön till 31 december.</p>
 
 
 
-<p><strong>Vilka svenska bolag kan drabbas?</strong>&lt;br>SAS, TUI (Tuifly Nordic), Ving (Sunclass Airlines) samt andra som trafikerar spanska semesterorter.</p>
+<p><strong>Vilka svenska bolag kan drabbas?</strong><br>SAS, TUI (Tuifly Nordic), Ving (Sunclass Airlines) samt andra som trafikerar spanska semesterorter.</p>
 
 
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/kryssningsfartyg-blev-sjukstuga-pa-oppet-hav/">Kryssningsfartyg blev sjukstuga på öppet hav</a> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/strejkkaos-hotar-semestern-svenska-resenarer-fastnar-i-spanien/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/strejkkaos-hotar-semestern-svenska-resenarer-fastnar-i-spanien/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art blue">
-      <h2 class="hed hed-md">Världens mest flygkåta nationer – och vart alla ska enligt IATA</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Mon, 11 Aug 2025 14:11:44 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/05/allnipponairways-1024x512.jpg" alt="">
-    </figure>
-      <div class="body"><p>Amerikanerna leder. Kineserna jagar. Britterna flyr till solen. Det är kontentan av en rapport från IATA för 2024 – flygbolagens egen mästerskapstabell. Full av siffror, men roligare än att försöka…</p>
+    <article class="mag-art ">
+      <h2 class="title">Världens mest flygkåta nationer – och vart alla ska enligt IATA</h2>
+      <div class="byline">By Viggo Cavling · 11 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/05/allnipponairways-1024x512.jpg" alt=""></figure>
+      <div class="body">
 <p>Amerikanerna leder. Kineserna jagar. Britterna flyr till solen. Det är kontentan av en rapport från IATA för 2024 – flygbolagens egen mästerskapstabell. Full av siffror, men roligare än att försöka tyda en SAS-voucher.</p>
 
 
@@ -720,21 +537,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/flygjatte-glomde-tva-blinda-passagerare-kunde-inte-se-informationen/">Flygjätte glömde två blinda passagerare kvar på marken</a> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/varldens-flygkata-nationer-och-vart-alla-ska-enligt-iata/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/varldens-flygkata-nationer-och-vart-alla-ska-enligt-iata/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Här är världens 20 bästa städer – puh, Stockholm är med</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Mon, 11 Aug 2025 13:50:08 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/06/5-26-1024x576.png" alt="">
-    </figure>
-      <div class="body"><p>Vad gör en stad till världens bästa städer? Är det maten, shoppingen, stränderna eller känslan av att bara vilja stanna lite längre? Här är listan som tar dig från tapas i Valencia till pingviner i…</p>
+    <article class="mag-art ">
+      <h2 class="title">Här är världens 20 bästa städer – puh, Stockholm är med</h2>
+      <div class="byline">By Viggo Cavling · 11 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/06/5-26-1024x576.png" alt=""></figure>
+      <div class="body">
 <p>Vad gör en stad till världens bästa städer? Är det maten, shoppingen, stränderna eller känslan av att bara vilja stanna lite längre? Här är listan som tar dig från tapas i Valencia till pingviner i Kapstaden – med ett välförtjänt stopp i Stockholm.&#8221;</p>
 
 
@@ -964,66 +774,18 @@
 <li>Spara Sydney till vintern – din kropp kommer tacka dig.</li>
 </ol>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/har-ar-varldens-20-basta-stader-puh-stockholm-ar-med/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/har-ar-varldens-20-basta-stader-puh-stockholm-ar-med/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-      </div>
-      
-    <aside class="sidebar">
-      
-    <section class="chip">
-      <div class="chip-head">City talk</div>
-      <ul class="chip-list">
-        
-    <li>
-      <span class="dot"></span>
-      <strong>Viggos resdagbok: Tidvattenschock i piraternas stad</strong>
-    </li>
-    <li>
-      <span class="dot"></span>
-      <strong>Flygjätte glömde två blinda passagerare kvar på marken</strong>
-    </li>
-    <li>
-      <span class="dot"></span>
-      <strong>Nya flygregler kan skapa kaos: Kanske får vinflaskan följa med?</strong>
-    </li>
-    <li>
-      <span class="dot"></span>
-      <strong>Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</strong>
-    </li>
-    <li>
-      <span class="dot"></span>
-      <strong>Italiensk mat på riktigt i Rom? Ta bussen bort från Fontana di Trevi</strong>
-    </li>
-    <li>
-      <span class="dot"></span>
-      <strong>Nu tar hipsters över Nice</strong>
-    </li>
-      </ul>
-    </section>
-  
-    </aside>
-    </section>
-  
+  </section>
+
+  <section class="mag-page" data-page="2">
     
-    <section class="page" data-page="2">
-      <header class="ribbon">
-        <div class="section">Investment strategy</div>
-        <div class="folio">Aug 13, 2025 · 2</div>
-      </header>
-      <div class="columns">
-        
-    <article class="art">
-      <h2 class="hed hed-xl">Viggos resdagbok: Tidvattenschock i piraternas stad</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Mon, 11 Aug 2025 08:51:36 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-215-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike. Saint-Malo bjuder på 12 meters magi, granitstarka stadsmurar och en historia fylld av välklädda pirater. Vi kom…</p>
+    <article class="mag-art ">
+      <h2 class="title">Viggos resdagbok: Tidvattenschock i piraternas stad</h2>
+      <div class="byline">By Viggo Cavling · 11 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-215-1024x512.png" alt=""></figure>
+      <div class="body">
 <p><strong>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike.</strong> Saint-Malo bjuder på 12 meters magi, granitstarka stadsmurar och en historia fylld av välklädda pirater. Vi kom för musslorna, men fick plastglasvin, poddar och en lektion i att ta tidvattnet på allvar.</p>
 
 
@@ -1072,7 +834,7 @@
 
 
 
-<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</a>&lt;br><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-laddstopp-strandliv-och-krigshistoria-i-normandie/">Viggos resdagbok: Laddstopp, strandliv och krigshistoria i Normandie</a></p>
+<p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</a><br><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-laddstopp-strandliv-och-krigshistoria-i-normandie/">Viggos resdagbok: Laddstopp, strandliv och krigshistoria i Normandie</a></p>
 
 
 
@@ -1090,18 +852,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-dagbok-fran-en-bilsemester-i-europa-del-1/">Viggos dagbok från en bilsemester i Europa, del 1</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-tidvattenschock-i-piraternas-stad/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-tidvattenschock-i-piraternas-stad/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-lg">Flygjätte glömde två blinda passagerare kvar på marken</h2>
+    <article class="mag-art no-image">
+      <h2 class="title">Flygjätte glömde två blinda passagerare kvar på marken</h2>
+      <div class="byline">By Johan Augustin · 11 aug. 2025</div>
       
-    <div class="meta">
-      <span class="by">By Johan Augustin</span> · <time>Mon, 11 Aug 2025 00:46:09 +0000</time>
-    </div>
-      
-      <div class="body"><p>Två blinda passagerare glömdes kvar på flygplatsen sedan deras flygplan hade fått ny avgångsinformation som kvinnorna inte hade kunnat läsa. Nu vill resenärerna se en skärpning hos flygbolagen som…</p>
+      <div class="body">
 <p><strong>Två blinda passagerare glömdes kvar på flygplatsen sedan deras flygplan hade fått ny avgångsinformation som kvinnorna inte hade kunnat läsa. Nu vill resenärerna se en skärpning hos flygbolagen som bör ta bättre hänsyn till blinda.</strong></p>
 
 
@@ -1150,7 +908,7 @@
 
 
 
-<p>”Vi ber om ursäkt för besväret,” låter ett uttalande.&lt;br>&#8220;Southwest söker alltid efter sätt att förbättra våra kunders reseupplevelser, och vi är aktiva inom flygbranschen när det gäller att dela bästa praxis för hur man bäst kan tillgodose passagerare med funktionsnedsättningar.”</p>
+<p>”Vi ber om ursäkt för besväret,” låter ett uttalande.<br>&#8220;Southwest söker alltid efter sätt att förbättra våra kunders reseupplevelser, och vi är aktiva inom flygbranschen när det gäller att dela bästa praxis för hur man bäst kan tillgodose passagerare med funktionsnedsättningar.”</p>
 
 
 
@@ -1164,21 +922,14 @@
 
 <p><a href="https://www.dagensps.se/foretag/gigantiska-summor-nar-plan-star-stilla/">Gigantiska summor när plan står stilla. Dagens PS</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/flygjatte-glomde-tva-blinda-passagerare-kunde-inte-se-informationen/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/flygjatte-glomde-tva-blinda-passagerare-kunde-inte-se-informationen/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-lg">Nya flygregler kan skapa kaos: Kanske får vinflaskan följa med?</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Sun, 10 Aug 2025 22:11:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/04/sdlVVvoQFCHjzs-1024x512.jpg" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekend-redaktionen rapporterar: Snart kan du ta med två liter vätska i handbagaget – eller inte. EU:s nya röntgensystem skapar förvirring på Europas flygplatser. En liter hit eller…</p>
+    <article class="mag-art ">
+      <h2 class="title">Nya flygregler kan skapa kaos: Kanske får vinflaskan följa med?</h2>
+      <div class="byline">By Viggo Cavling · 10 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2024/04/sdlVVvoQFCHjzs-1024x512.jpg" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekend-redaktionen rapporterar: Snart kan du ta med två liter vätska i handbagaget – eller inte. EU:s nya röntgensystem skapar förvirring på Europas flygplatser.</p>
 
 
@@ -1377,21 +1128,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/varlden/inga-shorts-pa-flyget-flygbolagens-hemliga-kladkod-avslojad/">&#8220;Inga shorts på flyget&#8221; – flygbolagens hemliga klädkod avslöjad</a> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/ta-med-vinflaskan-eller-inte-nya-flygregler-kan-skapa-kaos/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/ta-med-vinflaskan-eller-inte-nya-flygregler-kan-skapa-kaos/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Sun, 10 Aug 2025 09:14:55 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-214-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike. Idag från världens största militära landstigning till världens bästa dessert – allt på mindre än 24 timmar.…</p>
+    <article class="mag-art ">
+      <h2 class="title">Viggos resdagbok: Från D-Day till crème brûlée i Bretagne</h2>
+      <div class="byline">By Viggo Cavling · 10 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/2-214-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekends redaktör Viggo Cavling skriver resdagbok på bilsemestern i Frankrike. Idag från  världens största militära landstigning till världens bästa dessert – allt på mindre än 24 timmar.</p>
 
 
@@ -1474,21 +1218,14 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/resor/viggos-dagbok-fran-en-bilsemester-i-europa-del-1/">Viggos dagbok från en bilsemester i Europa, del 1</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/viggos-resdagbok-fran-d-day-till-creme-brulee-i-bretagne/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Italiensk mat på riktigt i Rom? Ta bussen bort från Fontana di Trevi</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Fri, 08 Aug 2025 22:44:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/5-131-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Att äta sig igenom Roms historiska centrum är som att bläddra i en blek kokbok på engelska. Men bara några hållplatser bort väntar en annan stad – en där romarna själva äter, dricker och lever. Här…</p>
+    <article class="mag-art ">
+      <h2 class="title">Italiensk mat på riktigt i Rom? Ta bussen bort från Fontana di Trevi</h2>
+      <div class="byline">By Viggo Cavling · 08 aug. 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/08/5-131-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Att äta sig igenom Roms historiska centrum är som att bläddra i en blek kokbok på engelska. Men bara några hållplatser bort väntar en annan stad – en där romarna själva äter, dricker och lever. Här är några ställen som bevisar att pastans framtid inte ligger bland gladiatorhjälmar i plast.</p>
 
 
@@ -1501,7 +1238,7 @@
 
 
 
-<p><strong>Adress:</strong> Via delle Palme 44 D/E&lt;br><strong>Pris:</strong> Pasta från 14 euro, varmrätter från 16 euro</p>
+<p><strong>Adress:</strong> Via delle Palme 44 D/E<br><strong>Pris:</strong> Pasta från 14 euro, varmrätter från 16 euro</p>
 
 
 
@@ -1525,7 +1262,7 @@
 
 
 
-<p><strong>Adress:</strong> Via degli Equi 62&lt;br><strong>Pris:</strong> Pasta från 16 euro, varmrätter från 22 euro</p>
+<p><strong>Adress:</strong> Via degli Equi 62<br><strong>Pris:</strong> Pasta från 16 euro, varmrätter från 22 euro</p>
 
 
 
@@ -1545,7 +1282,7 @@
 
 
 
-<p><strong>Adress:</strong> Via Alessandro Severo 220&lt;br><strong>Pris:</strong> Pasta och varmrätter från 15 euro</p>
+<p><strong>Adress:</strong> Via Alessandro Severo 220<br><strong>Pris:</strong> Pasta och varmrätter från 15 euro</p>
 
 
 
@@ -1561,7 +1298,7 @@
 
 
 
-<p><strong>Adresser:</strong>&lt;br>Mostò: Viale Pinturicchio 32 – Smårätter från 10 euro&lt;br>Avenida Calò: Viale Pinturicchio 40 – Pizzor från 9 till 22 euro, avsmakning 55 euro</p>
+<p><strong>Adresser:</strong><br>Mostò: Viale Pinturicchio 32 – Smårätter från 10 euro<br>Avenida Calò: Viale Pinturicchio 40 – Pizzor från 9 till 22 euro, avsmakning 55 euro</p>
 
 
 
@@ -1577,7 +1314,7 @@
 
 
 
-<p><strong>Adress:</strong> Viale Cola di Rienzo 200&lt;br><strong>Pris:</strong> Smårätter från 6 euro, pasta från 15 euro, varmrätter från 19 euro</p>
+<p><strong>Adress:</strong> Viale Cola di Rienzo 200<br><strong>Pris:</strong> Smårätter från 6 euro, pasta från 15 euro, varmrätter från 19 euro</p>
 
 
 
@@ -1589,7 +1326,7 @@
 
 
 
-<p><strong>Tips 1:</strong> Lämna centrum. Bra mat bor inte granne med Fontana di Trevi.&lt;br><strong>Tips 2:</strong> Boka bord. Även de små trattoriorna är populära bland de som vet.&lt;br><strong>Tips 3:</strong> Våga beställa det konstiga. Du är i Rom – inälvor är kärlek.&lt;br><strong>Tips 4:</strong> Ta tunnelbana och spårvagn. Taxi är för turister.&lt;br><strong>Tips 5:</strong> Säg aldrig nej till prosecco som jäst i flaskan. Särskilt inte om servern har skägg och barfota loafers.</p>
+<p><strong>Tips 1:</strong> Lämna centrum. Bra mat bor inte granne med Fontana di Trevi.<br><strong>Tips 2:</strong> Boka bord. Även de små trattoriorna är populära bland de som vet.<br><strong>Tips 3:</strong> Våga beställa det konstiga. Du är i Rom – inälvor är kärlek.<br><strong>Tips 4:</strong> Ta tunnelbana och spårvagn. Taxi är för turister.<br><strong>Tips 5:</strong> Säg aldrig nej till prosecco som jäst i flaskan. Särskilt inte om servern har skägg och barfota loafers.</p>
 
 
 
@@ -1598,31 +1335,24 @@
 
 
 
-    &lt;section class="c-external-notice">
-                    &lt;div class="c-external-notice__image">
+    <section class="c-external-notice">
+                    <div class="c-external-notice__image">
                 <img decoding="async" src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F08%2F1-201.png&#038;w=1200&#038;q=75" />
-            &lt;/div>
+            </div>
                             <a href="https://www.dagensps.se/weekend/viggos-resdagbok-fran-en-bilsemester-vi-ar-i-paradiset/" class="c-external-notice__content" target="_blank">
                 <h2>Viggos resdagbok från en bilsemester: Vi är i paradiset</h2>
                                     <p>Perfect Weekends redaktör Viggo Cavling rapporterar från en bilsemester i Normandie, där havet sjunger, bilen gnäller och servitören glömmer medium.</p>
                             </a>
-            &lt;/section>
+            </section>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/restaurang/italiensk-mat-pa-riktigt-i-rom-ta-bussen-bort-fran-fontana-di-trevi/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/restaurang/italiensk-mat-pa-riktigt-i-rom-ta-bussen-bort-fran-fontana-di-trevi/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Nu tar hipsters över Nice</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Fri, 25 Jul 2025 22:33:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-157-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekend reser till Frankrikes mest missförstådda stad_ Nice – och hittar en riviera som bytt likörglass mot naturvin, barock mot bistro i tvättstuga och pensionatsdamer mot parisiska…</p>
+    <article class="mag-art ">
+      <h2 class="title">Nu tar hipsters över Nice</h2>
+      <div class="byline">By Viggo Cavling · 25 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/1-157-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekend reser till Frankrikes mest missförstådda stad_ Nice – och hittar en riviera som bytt likörglass mot naturvin, barock mot bistro i tvättstuga och pensionatsdamer mot parisiska 30-nånting-åringar i sneakers.</p>
 
 
@@ -1635,11 +1365,11 @@
 
 
 
-<p>Minns du hur Nice brukade kännas? Lite dammigt. Lite bittert. Lite som en bougainvillea som blommat för länge.&lt;br>Stadens själ var visserligen där – det vackra ljuset, havet, husen, bergen – men ytan hade börjat likna ett pensionssparande med avgifter: långsamt urholkande och svårt att komma ur.</p>
+<p>Minns du hur Nice brukade kännas? Lite dammigt. Lite bittert. Lite som en bougainvillea som blommat för länge.<br>Stadens själ var visserligen där – det vackra ljuset, havet, husen, bergen – men ytan hade börjat likna ett pensionssparande med avgifter: långsamt urholkande och svårt att komma ur.</p>
 
 
 
-<p>Men så hände något. Det började med konstskolorna. Fortsatte med småvinimportörerna. Och sen kom de: de unga, de urbana, de kräsna men kärleksfulla.&lt;br>Nu sitter de i klungor på <strong>Place du Pin</strong>, dricker aperol med blodgrape och diskuterar belgisk techno. De har tagit över stan – och gjort den levande.</p>
+<p>Men så hände något. Det började med konstskolorna. Fortsatte med småvinimportörerna. Och sen kom de: de unga, de urbana, de kräsna men kärleksfulla.<br>Nu sitter de i klungor på <strong>Place du Pin</strong>, dricker aperol med blodgrape och diskuterar belgisk techno. De har tagit över stan – och gjort den levande.</p>
 
 
 
@@ -1651,7 +1381,7 @@
 
 
 
-<p>Det mest talande exemplet på transformationen heter <strong>Hotel du Couvent</strong>.&lt;br>Ett före detta kloster i gamla stan, nu ombyggt till hotell med ett slags vördnadsfull dekadens. Du checkar in i ett rum med kalkstensväggar, korsvirke och ett badkar i svart emalj. Frukosten serveras i trädgården under fikonträd.</p>
+<p>Det mest talande exemplet på transformationen heter <strong>Hotel du Couvent</strong>.<br>Ett före detta kloster i gamla stan, nu ombyggt till hotell med ett slags vördnadsfull dekadens. Du checkar in i ett rum med kalkstensväggar, korsvirke och ett badkar i svart emalj. Frukosten serveras i trädgården under fikonträd.</p>
 
 
 
@@ -1671,7 +1401,7 @@
 
 
 
-<p>Många av de nya Niceborna är tillfälliga. De har lämnat Paris under pandemin, men glömt att åka hem.&lt;br>De har startat galleri i ett garage. De har öppnat popup-barer i gamla spårvagnshus. De bor tre i en våning i Cimiez men jobbar med design för Berlin.</p>
+<p>Många av de nya Niceborna är tillfälliga. De har lämnat Paris under pandemin, men glömt att åka hem.<br>De har startat galleri i ett garage. De har öppnat popup-barer i gamla spårvagnshus. De bor tre i en våning i Cimiez men jobbar med design för Berlin.</p>
 
 
 
@@ -1687,7 +1417,7 @@
 
 
 
-<p>Måltiderna är kärnan i det nya Nice. På <strong>Lavomatique</strong> serveras du boudin noir med fänkål och gröna linser i en före detta tvättomat.&lt;br>Runt dig sitter konststudenter, äldre modefotografer från Milano och en schweizisk familj med ett barn döpt efter en ost.</p>
+<p>Måltiderna är kärnan i det nya Nice. På <strong>Lavomatique</strong> serveras du boudin noir med fänkål och gröna linser i en före detta tvättomat.<br>Runt dig sitter konststudenter, äldre modefotografer från Milano och en schweizisk familj med ett barn döpt efter en ost.</p>
 
 
 
@@ -1703,7 +1433,7 @@
 
 
 
-<p>Nice har hittat hem i sitt kök. Man gör det man kan, utan överdrift.&lt;br>På <strong>La Merenda</strong> får du ravioli med fläskragù som långkokats i vin. Du måste betala kontant, lämna mobilen utanför och acceptera att menyn är vad den är.&lt;br>Men maten… herregud. Du vill adoptera kocken, köpa köksluckorna och flytta in i köttkvarnen.</p>
+<p>Nice har hittat hem i sitt kök. Man gör det man kan, utan överdrift.<br>På <strong>La Merenda</strong> får du ravioli med fläskragù som långkokats i vin. Du måste betala kontant, lämna mobilen utanför och acceptera att menyn är vad den är.<br>Men maten… herregud. Du vill adoptera kocken, köpa köksluckorna och flytta in i köttkvarnen.</p>
 
 
 
@@ -1715,7 +1445,7 @@
 
 
 
-<p>Nice är konstens stad – och det märks.&lt;br><strong>Chapelle du Rosaire</strong>, ritad av Matisse när han var gammal och trött men fortfarande briljant, är kanske den mest lågmälda konstupplevelsen i Europa.</p>
+<p>Nice är konstens stad – och det märks.<br><strong>Chapelle du Rosaire</strong>, ritad av Matisse när han var gammal och trött men fortfarande briljant, är kanske den mest lågmälda konstupplevelsen i Europa.</p>
 
 
 
@@ -1735,7 +1465,7 @@
 
 
 
-<p>Nice är inte längre bara flygplatsen på väg till någon annans lyx. Det är slutdestinationen.&lt;br>Här sitter man på <strong>Bar des Oiseaux</strong>, beställer en pastis till, och tänker: jag behöver inget mer. Jag behöver bara detta.</p>
+<p>Nice är inte längre bara flygplatsen på väg till någon annans lyx. Det är slutdestinationen.<br>Här sitter man på <strong>Bar des Oiseaux</strong>, beställer en pastis till, och tänker: jag behöver inget mer. Jag behöver bara detta.</p>
 
 
 
@@ -1755,19 +1485,19 @@
 
 
 
-<p><strong>Boende:</strong>&lt;br>– <strong>Mama Shelter</strong> – färgglatt, folkligt, frukost till 16. <a href="https://www.hotels.com/affiliate/qK98xcw"><strong>Boka in oss nu till bästa priset.</strong></a>&lt;br>– <strong>Hotel du Couvent</strong> – för dig som gillar din frukost med fikon och frid. <a href="https://www.hotels.com/affiliate/oBhzv6h"><strong>Boka in oss nu till bästa priset.</strong></a>&lt;br>– <strong>Le Hameau</strong> – en botanisk dröm i St-Paul-de-Vence, 20 min bort. <a href="https://sv.hotels.com/ho286596/hotel-le-hameau-saint-paul-de-vence-frankrike/?chkin=2025-08-29&chkout=2025-08-31&x_pwa=1&rfrr=HSR&pwa_ts=1753338548594&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&useRewards=true&rm1=a2&regionId=5786&destination=Saint-Paul-de-Vence%2C+Alpes-Maritimes%2C+Frankrike&destType=MARKET&selected=1677561&latLong=43.696969%2C7.12214&sort=RECOMMENDED&top_dp=5338&top_cur=SEK&userIntent=&selectedRoomType=316041360&selectedRatePlan=385306035&expediaPropertyId=1677561&searchId=10d0ead1-b70d-48ab-bb0c-b3eb360b41ae"><strong>Boka in oss nu till bästa priset.</strong></a></p>
+<p><strong>Boende:</strong><br>– <strong>Mama Shelter</strong> – färgglatt, folkligt, frukost till 16. <a href="https://www.hotels.com/affiliate/qK98xcw"><strong>Boka in oss nu till bästa priset.</strong></a><br>– <strong>Hotel du Couvent</strong> – för dig som gillar din frukost med fikon och frid. <a href="https://www.hotels.com/affiliate/oBhzv6h"><strong>Boka in oss nu till bästa priset.</strong></a><br>– <strong>Le Hameau</strong> – en botanisk dröm i St-Paul-de-Vence, 20 min bort. <a href="https://sv.hotels.com/ho286596/hotel-le-hameau-saint-paul-de-vence-frankrike/?chkin=2025-08-29&chkout=2025-08-31&x_pwa=1&rfrr=HSR&pwa_ts=1753338548594&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&useRewards=true&rm1=a2&regionId=5786&destination=Saint-Paul-de-Vence%2C+Alpes-Maritimes%2C+Frankrike&destType=MARKET&selected=1677561&latLong=43.696969%2C7.12214&sort=RECOMMENDED&top_dp=5338&top_cur=SEK&userIntent=&selectedRoomType=316041360&selectedRatePlan=385306035&expediaPropertyId=1677561&searchId=10d0ead1-b70d-48ab-bb0c-b3eb360b41ae"><strong>Boka in oss nu till bästa priset.</strong></a></p>
 
 
 
-<p><strong>Restauranger:</strong>&lt;br>– <strong>Lavomatique</strong> – tvättäkta matglädje.&lt;br>– <strong>La Merenda</strong> – kontant, kompakt och kompromisslöst gott.&lt;br>– <strong>Boccaccio</strong> – för kvällar med fisk och poesi.</p>
+<p><strong>Restauranger:</strong><br>– <strong>Lavomatique</strong> – tvättäkta matglädje.<br>– <strong>La Merenda</strong> – kontant, kompakt och kompromisslöst gott.<br>– <strong>Boccaccio</strong> – för kvällar med fisk och poesi.</p>
 
 
 
-<p><strong>Göra:</strong>&lt;br>– Cykla längs Promenade des Anglais i gryning.&lt;br>– Besök Chapelle du Rosaire, säg tack till Matisse.&lt;br>– Köp parfym som ingen annan har.&lt;br>– Gå vilse. Alltid gå vilse.</p>
+<p><strong>Göra:</strong><br>– Cykla längs Promenade des Anglais i gryning.<br>– Besök Chapelle du Rosaire, säg tack till Matisse.<br>– Köp parfym som ingen annan har.<br>– Gå vilse. Alltid gå vilse.</p>
 
 
 
-<p><strong>Slutsats:</strong> Nice är inte längre platsen du lämnar efter lunch – det är platsen du aldrig riktigt vill lämna.&lt;br>Pensionärerna har flytt. Hipsters har flyttat in. Och med dem kom livet tillbaka.</p>
+<p><strong>Slutsats:</strong> Nice är inte längre platsen du lämnar efter lunch – det är platsen du aldrig riktigt vill lämna.<br>Pensionärerna har flytt. Hipsters har flyttat in. Och med dem kom livet tillbaka.</p>
 
 
 
@@ -1829,32 +1559,18 @@
 
 <p><a href="https://www.dagensps.se/weekend/resor/sa-packar-du-som-ett-flygproffs-i-en-enda-vaska/"></a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/pensionarerna-har-flytt-nu-tar-hipsters-over-nice/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/pensionarerna-har-flytt-nu-tar-hipsters-over-nice/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-      </div>
-      
-    </section>
-  
+  </section>
+
+  <section class="mag-page" data-page="3">
     
-    <section class="page" data-page="3">
-      <header class="ribbon">
-        <div class="section">Markets & Ideas</div>
-        <div class="folio">Aug 13, 2025 · 3</div>
-      </header>
-      <div class="columns">
-        
-    <article class="art">
-      <h2 class="hed hed-xl">Stjärnkrögaren Pontus speciella framgångsrecept</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Thu, 24 Jul 2025 22:54:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F2-88.png&#038;w=1200&#038;q=75" alt="">
-    </figure>
-      <div class="body"><p>Pontus Frithiof till Spotify: ”Vi kräver garanterad vinst – annars blir det inget.” Stjärnkrögaren som hellre samarbetar med Spotify än öppnar ännu en restaurang i city. För Pontus Frithiof är…</p>
+    <article class="mag-art ">
+      <h2 class="title">Stjärnkrögaren Pontus speciella framgångsrecept</h2>
+      <div class="byline">By Viggo Cavling · 24 juli 2025</div>
+      <figure class="feature-img"><img src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F2-88.png&#038;w=1200&#038;q=75" alt=""></figure>
+      <div class="body">
 <p>Pontus Frithiof till Spotify: ”Vi kräver garanterad vinst – annars blir det inget.” Stjärnkrögaren som hellre samarbetar med Spotify än öppnar ännu en restaurang i city. För Pontus Frithiof är lönsamhet viktigare än prestige – och den som vill samarbeta får räkna med tuffa krav.</p>
 
 
@@ -1876,15 +1592,15 @@
 
 
 
-    &lt;section class="c-external-notice">
-                    &lt;div class="c-external-notice__image">
+    <section class="c-external-notice">
+                    <div class="c-external-notice__image">
                 <img decoding="async" src="https://www.dagensps.se/_next/image/?url=https%3A%2F%2Fdagensps.fra1.cdn.digitaloceanspaces.com%2Fuploads%2F2025%2F07%2F2-88.png&#038;w=1200&#038;q=75" />
-            &lt;/div>
+            </div>
                             <a href="https://www.dagensps.se/weekend/kronika-darfor-ska-du-alltid-aka-till-kopenhamn/" class="c-external-notice__content" target="_blank">
                 <h2>Krönika: Därför ska du alltid åka till Köpenhamn</h2>
                                     <p>Köpenhamn slår Stockholm – i alla fall när det gäller livskvalitet, kollektivtrafik och gastronomi. I sommar fyller Öresundsbron 25 år, och vad passar bättre än en resa över sundet?</p>
                             </a>
-            &lt;/section>
+            </section>
 
 
 
@@ -2018,21 +1734,14 @@
 
 <p><strong>Läs även: <a href="https://www.dagensps.se/weekend/mat-vin/sa-blev-en-svensk-gron-marsipandrom-ett-viralt-fenomen/">Hurra: Vår svenska prinsesstårta är en viral superhit</a></strong> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/restaurang/stjarnkrogaren-pontus-speciella-framgangsrecept/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/restaurang/stjarnkrogaren-pontus-speciella-framgangsrecept/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-lg">Hurra: Vår svenska prinsesstårta är en viral superhit</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Mon, 21 Jul 2025 07:53:26 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-136-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekend har sällan varit så fluffigt grön, söt och politisk. Från gamla kakbord i Småland till TikTok i Brooklyn – prinsesstårtan är plötsligt trendigaste desserten i USA. Från kungligt…</p>
+    <article class="mag-art ">
+      <h2 class="title">Hurra: Vår svenska prinsesstårta är en viral superhit</h2>
+      <div class="byline">By Viggo Cavling · 21 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/4-136-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekend har sällan varit så fluffigt grön, söt och politisk. Från gamla kakbord i Småland till TikTok i Brooklyn – prinsesstårtan är plötsligt trendigaste desserten i USA.</p>
 
 
@@ -2127,21 +1836,14 @@
 
 <p></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/mat-vin/sa-blev-en-svensk-gron-marsipandrom-ett-viralt-fenomen/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/mat-vin/sa-blev-en-svensk-gron-marsipandrom-ett-viralt-fenomen/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-lg">Viggos topplista: Fem suveräna spahotell för möhippan 2025</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Mon, 14 Jul 2025 10:14:48 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/05/3-12-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Fem spahotell där ni kan bada, bubbla, skråla Beyoncé och känna er som världens bästa version av er själva. För den blivande bruden – och hennes hov. Läs även: Detta gäller för svensexan (och…</p>
+    <article class="mag-art ">
+      <h2 class="title">Viggos topplista: Fem suveräna spahotell för möhippan 2025</h2>
+      <div class="byline">By Viggo Cavling · 14 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/05/3-12-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Fem spahotell där ni kan bada, bubbla, skråla Beyoncé och känna er som världens bästa version av er själva. För den blivande bruden – och hennes hov.</p>
 
 
@@ -2158,7 +1860,7 @@
 
 
 
-<p>Hit åker man med båt eller Tesla. Idyllen är total – skog, sjö, eld, champagne. Det är närmaste vi kommer <strong>Long Island</strong> utan att korsa Atlanten. Ägs av <strong>Sabis-familjen</strong>, och det märks: det är klassiskt, elegant och diskret lyxigt – med en spaavdelning som känns som något från <em>Badehotellet</em>, fast med bättre vinlista.&lt;br>Hotellet har dessutom vunnit <strong>Wilhelmina Skogh-priset som Sveriges bästa spahotell</strong> – vilket säger det mesta.&lt;br><strong><a href="https://sv.hotels.com/Hotel-Search?destination=Sm%C3%A5dalar%C3%B6%20G%C3%A5rd%2C%20Dalar%C3%B6%2C%20Stockholms%20l%C3%A4n%2C%20Sverige&regionId=603020&latLong=59.16563%2C18.45231&propertyId=3004617&selected=3004617&flexibility=0_DAY&d1=2025-08-11&startDate=2025-08-11&d2=2025-08-13&endDate=2025-08-13&adults=2&rooms=1&upsellingNumNightsAdded=&theme=&userIntent=&semdtl=&upsellingDiscountTypeAdded=&categorySearch=&useRewards=true&sort=RECOMMENDED&pos=HCOM_SE&locale=sv_SE&clickref=1011lBsGzLbY&rffrid=aff.hcom.SE.038.000.1101l403847.kwrd%3D1011lBsGzLbY&affcid=HCOM-SE.DIRECT.PHG.1101l403847&afflid=1011lBsGzLbY&affdtl=PHG.1011lBsGzLbY.PZ_jvNoG6e">Boka in mig nu till bästa pris!</a></strong></p>
+<p>Hit åker man med båt eller Tesla. Idyllen är total – skog, sjö, eld, champagne. Det är närmaste vi kommer <strong>Long Island</strong> utan att korsa Atlanten. Ägs av <strong>Sabis-familjen</strong>, och det märks: det är klassiskt, elegant och diskret lyxigt – med en spaavdelning som känns som något från <em>Badehotellet</em>, fast med bättre vinlista.<br>Hotellet har dessutom vunnit <strong>Wilhelmina Skogh-priset som Sveriges bästa spahotell</strong> – vilket säger det mesta.<br><strong><a href="https://sv.hotels.com/Hotel-Search?destination=Sm%C3%A5dalar%C3%B6%20G%C3%A5rd%2C%20Dalar%C3%B6%2C%20Stockholms%20l%C3%A4n%2C%20Sverige&regionId=603020&latLong=59.16563%2C18.45231&propertyId=3004617&selected=3004617&flexibility=0_DAY&d1=2025-08-11&startDate=2025-08-11&d2=2025-08-13&endDate=2025-08-13&adults=2&rooms=1&upsellingNumNightsAdded=&theme=&userIntent=&semdtl=&upsellingDiscountTypeAdded=&categorySearch=&useRewards=true&sort=RECOMMENDED&pos=HCOM_SE&locale=sv_SE&clickref=1011lBsGzLbY&rffrid=aff.hcom.SE.038.000.1101l403847.kwrd%3D1011lBsGzLbY&affcid=HCOM-SE.DIRECT.PHG.1101l403847&afflid=1011lBsGzLbY&affdtl=PHG.1011lBsGzLbY.PZ_jvNoG6e">Boka in mig nu till bästa pris!</a></strong></p>
 
 
 
@@ -2170,7 +1872,7 @@
 
 
 
-<p>Det här är inte bara ett spa, det är en scen. På Ellery glider du runt bland DJ:s, poolbarer och palmer som om du vore med i en reklamfilm för Aperol Spritz. Hotellet drivs av <strong>ESS Group</strong>, vilket innebär genomtänkt design, festvänlig atmosfär och en känsla av att varje detalj är till för din story.&lt;br><a href="https://www.hotels.com/affiliate/nQei1UD"><strong>Boka in mig nu till bästa pris!</strong></a></p>
+<p>Det här är inte bara ett spa, det är en scen. På Ellery glider du runt bland DJ:s, poolbarer och palmer som om du vore med i en reklamfilm för Aperol Spritz. Hotellet drivs av <strong>ESS Group</strong>, vilket innebär genomtänkt design, festvänlig atmosfär och en känsla av att varje detalj är till för din story.<br><a href="https://www.hotels.com/affiliate/nQei1UD"><strong>Boka in mig nu till bästa pris!</strong></a></p>
 
 
 
@@ -2182,7 +1884,7 @@
 
 
 
-<p>Yasuragi är ett av Sveriges första riktiga spahotell – och numera en del av Petter Stordalens portfölj. En gång i tiden var detta en mobilfri zon med zen som ledord, men tiderna förändras: nu är mobilen tillåten. Kanske för att möhippegänget vill dokumentera sin sittning i den ångande utomhuskällan? Här är det fortfarande lågmält, vackert och vilsamt – men med lite mer wifi.&lt;br><a href="https://www.hotels.com/affiliate/IU8ozbs">Boka in mig nu till bästa pris</a></p>
+<p>Yasuragi är ett av Sveriges första riktiga spahotell – och numera en del av Petter Stordalens portfölj. En gång i tiden var detta en mobilfri zon med zen som ledord, men tiderna förändras: nu är mobilen tillåten. Kanske för att möhippegänget vill dokumentera sin sittning i den ångande utomhuskällan? Här är det fortfarande lågmält, vackert och vilsamt – men med lite mer wifi.<br><a href="https://www.hotels.com/affiliate/IU8ozbs">Boka in mig nu till bästa pris</a></p>
 
 
 
@@ -2194,7 +1896,7 @@
 
 
 
-<p>En liten bit från Göteborgs skrik och skrän hittar du ett spa där väggarna pryds av konst och bassängerna doftar av tång och hav. Arken är lite mer anonymt än spahotellen i Varberg och Falkenberg, vilket är perfekt för dig som vill fokusera på vänskap och återfuktning.&lt;br><a href="https://sv.hotels.com/ho176986/hotel-riverton-goteborg-sverige/?chkin=2025-08-11&chkout=2025-08-13&x_pwa=1&rfrr=HSR&pwa_ts=1752487955259&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&rffrid=aff.hcom.SE.038.000.1101l403847.kwrd%3D1011lBsGzLbY&useRewards=true&rm1=a2&regionId=181065&destination=G%C3%B6teborg%2C+V%C3%A4stra+G%C3%B6talands+l%C3%A4n%2C+Sverige&destType=MARKET&neighborhoodId=6220249&latLong=57.70442%2C11.96909&trackingData=AAAAAQAAAAEAAAAQijH5ktVdhDRKjr7NDcy207VYvHeWjyyjtuBMR2zNKmgXPrscvuCTgfTgVexN7W1Fg7maU62A_JCoIciVI_bF_ojMIasN9uxgmFfPwKBlJ3e-uDTo-Jz5RBEMWoFUH4YP9bYI8dDBMyiaOTGc30fR7EpY2UMF7ANSOtqYX_6IWpTdpVhxL5gF7NL8XlF397crhYIuQy75G-d_HYx0RtBm5kneppXsVNE1jlCU_Ucj3yrEiPAwimoi0i7Axl93Uqg-HOTEzKY5wfNCAZ8BLD-UXd6xLthMASHsm-W-8_rlqzkPh3lTkBd5Dc7SxQn1eRy4ovBjCJqO9b3FZyXtD3KzMVaFNG8hPoTBdS_idnrHesC3hi9K2BZpv2AMgvUceLynoN70yP7CbHRXyM4mu5Qw1bwDqg0B3GSnVy9Vh-1B1Gf9foUb4rIUUxBaMhAva-VLPrm5KFrIxhLWPgBTSW0VF2mevC_eK-tXiMhGcJ6YDItCuGGCyIdPR7kM_TtmpazMV5nAgJPBzNT5LB4suCClsSzdozHoNZhKe4ddoGBvTeiYIGLXs9-Fi7qSkrQPZJwuFKyk6OV9sjh7kMF-P7zpx7rhXAhn7blbTlIPCZkIOQPW8zCq_X7UhUpSZUpbow8QhZ8gp-jbGYn3cjDokViBtf2XGEcoZxyjMNirnqhw5L1bvfUWVxMQbVWcFIT7sO4B9ROwUOTenfex19lKNpBxea-oAZlNWbIJ1UpQynQl05GlYMUnT27XWhWrdvC2qR40fzNBQiKxCLM7I8iqmLo0WpIDaVWH5vmUbpBR1ouvF_rcTsx4z2KpyfEzbVYO1ijHSXAeKrZPejHgISfHF0L79RBCxJHBU126JR7xxX2JIq6ZCreb9rwfls77ePILkwVACyA5GiLEKYFazID788Xb3FLaILL1jKEJcJsiqFChbhSO2cNPqs8zupAaaUhnd2NENCAEmF-9mfEFEiHBZ1j7G87U_6T_iJuOKcD9v3S014I_0ucsqbUXHdKgA7zTbAUovF4izwootcvpvkuvspuWnBYX7YfRnSn4FQVf5F3tolPTWR2yTkbzkbqYVRLUzYg6QXt-YmWycitfrbWdoka4_WtFcK3qhn-qXUyG3_J10uCxJOXcIiiI6b_B9zEEcz3XtTVhqefMxQknsxtsWfCLCxkYMdw_eGSNtEDuIUDxaK7enmgP1Qq2fpUCRUDPX3XdmLvX4VTnr9v7BddUzVpmKD-1zEG515OZH_XMBh6NRV0Zszxn2DtO5GU1QPPkUL4swR28e96U5_t9MJkC8r7JaRw4BNlvb6yeAfdqdTFNaITSdfXP96XpvJWUdvY7MxsH&rank=1&testVersionOverride=Buttercup%2C39483.0.0%2C50028.0.0%2C50813.200860.1%2C51642.0.0%2C51690.0.0%2C52131.0.0%2C54709.194717.1%2C59134.0.0%2C50988.158353.0%2C60140.211636.0%2C54072.0.0%2C57292.224265.0&slots=&position=1&beaconIssued=&sort=RECOMMENDED&top_dp=3452&top_cur=SEK&affcid=HCOM-SE.DIRECT.PHG.1101l403847&afflid=1011lBsGzLbY&userIntent=&selectedRoomType=323079&selectedRatePlan=986520&expediaPropertyId=54547&searchId=6539f483-4c79-41fa-b0a7-d939152d32f4"><strong>Boka in mig nu till bästa pris</strong></a></p>
+<p>En liten bit från Göteborgs skrik och skrän hittar du ett spa där väggarna pryds av konst och bassängerna doftar av tång och hav. Arken är lite mer anonymt än spahotellen i Varberg och Falkenberg, vilket är perfekt för dig som vill fokusera på vänskap och återfuktning.<br><a href="https://sv.hotels.com/ho176986/hotel-riverton-goteborg-sverige/?chkin=2025-08-11&chkout=2025-08-13&x_pwa=1&rfrr=HSR&pwa_ts=1752487955259&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&rffrid=aff.hcom.SE.038.000.1101l403847.kwrd%3D1011lBsGzLbY&useRewards=true&rm1=a2&regionId=181065&destination=G%C3%B6teborg%2C+V%C3%A4stra+G%C3%B6talands+l%C3%A4n%2C+Sverige&destType=MARKET&neighborhoodId=6220249&latLong=57.70442%2C11.96909&trackingData=AAAAAQAAAAEAAAAQijH5ktVdhDRKjr7NDcy207VYvHeWjyyjtuBMR2zNKmgXPrscvuCTgfTgVexN7W1Fg7maU62A_JCoIciVI_bF_ojMIasN9uxgmFfPwKBlJ3e-uDTo-Jz5RBEMWoFUH4YP9bYI8dDBMyiaOTGc30fR7EpY2UMF7ANSOtqYX_6IWpTdpVhxL5gF7NL8XlF397crhYIuQy75G-d_HYx0RtBm5kneppXsVNE1jlCU_Ucj3yrEiPAwimoi0i7Axl93Uqg-HOTEzKY5wfNCAZ8BLD-UXd6xLthMASHsm-W-8_rlqzkPh3lTkBd5Dc7SxQn1eRy4ovBjCJqO9b3FZyXtD3KzMVaFNG8hPoTBdS_idnrHesC3hi9K2BZpv2AMgvUceLynoN70yP7CbHRXyM4mu5Qw1bwDqg0B3GSnVy9Vh-1B1Gf9foUb4rIUUxBaMhAva-VLPrm5KFrIxhLWPgBTSW0VF2mevC_eK-tXiMhGcJ6YDItCuGGCyIdPR7kM_TtmpazMV5nAgJPBzNT5LB4suCClsSzdozHoNZhKe4ddoGBvTeiYIGLXs9-Fi7qSkrQPZJwuFKyk6OV9sjh7kMF-P7zpx7rhXAhn7blbTlIPCZkIOQPW8zCq_X7UhUpSZUpbow8QhZ8gp-jbGYn3cjDokViBtf2XGEcoZxyjMNirnqhw5L1bvfUWVxMQbVWcFIT7sO4B9ROwUOTenfex19lKNpBxea-oAZlNWbIJ1UpQynQl05GlYMUnT27XWhWrdvC2qR40fzNBQiKxCLM7I8iqmLo0WpIDaVWH5vmUbpBR1ouvF_rcTsx4z2KpyfEzbVYO1ijHSXAeKrZPejHgISfHF0L79RBCxJHBU126JR7xxX2JIq6ZCreb9rwfls77ePILkwVACyA5GiLEKYFazID788Xb3FLaILL1jKEJcJsiqFChbhSO2cNPqs8zupAaaUhnd2NENCAEmF-9mfEFEiHBZ1j7G87U_6T_iJuOKcD9v3S014I_0ucsqbUXHdKgA7zTbAUovF4izwootcvpvkuvspuWnBYX7YfRnSn4FQVf5F3tolPTWR2yTkbzkbqYVRLUzYg6QXt-YmWycitfrbWdoka4_WtFcK3qhn-qXUyG3_J10uCxJOXcIiiI6b_B9zEEcz3XtTVhqefMxQknsxtsWfCLCxkYMdw_eGSNtEDuIUDxaK7enmgP1Qq2fpUCRUDPX3XdmLvX4VTnr9v7BddUzVpmKD-1zEG515OZH_XMBh6NRV0Zszxn2DtO5GU1QPPkUL4swR28e96U5_t9MJkC8r7JaRw4BNlvb6yeAfdqdTFNaITSdfXP96XpvJWUdvY7MxsH&rank=1&testVersionOverride=Buttercup%2C39483.0.0%2C50028.0.0%2C50813.200860.1%2C51642.0.0%2C51690.0.0%2C52131.0.0%2C54709.194717.1%2C59134.0.0%2C50988.158353.0%2C60140.211636.0%2C54072.0.0%2C57292.224265.0&slots=&position=1&beaconIssued=&sort=RECOMMENDED&top_dp=3452&top_cur=SEK&affcid=HCOM-SE.DIRECT.PHG.1101l403847&afflid=1011lBsGzLbY&userIntent=&selectedRoomType=323079&selectedRatePlan=986520&expediaPropertyId=54547&searchId=6539f483-4c79-41fa-b0a7-d939152d32f4"><strong>Boka in mig nu till bästa pris</strong></a></p>
 
 
 
@@ -2206,27 +1908,20 @@
 
 
 
-<p>Glöm allt du trodde du visste om Skåne. Maryhill Estate är nyöppnat, vackert och fyllt med själ. Här kombineras gårdshotell, vingårdskänsla och spa med panoramavyer över böljande landskap. Perfekt för den brud som älskar natur, elegans och en hint av Toscana i Skåne.&lt;br><strong><a href="https://sv.hotels.com/ho537124/?chkin=2025-08-11&chkout=2025-08-13&x_pwa=1&rfrr=HSR&pwa_ts=1752488024829&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&useRewards=true&rm1=a2&regionId=6260315&destination=Glumsl%C3%B6v%2C+Sk%C3%A5nes+l%C3%A4n%2C+Sverige&destType=MARKET&selected=11799981&latLong=55.941698%2C12.810486&sort=RECOMMENDED&top_dp=9072&top_cur=SEK&userIntent=&selectedRoomType=325346169&selectedRatePlan=397772909&expediaPropertyId=11799981&searchId=b8c0b1a1-4897-4752-a4df-9ff05f22f189">Boka in mig nu till bästa priset</a></strong></p>
+<p>Glöm allt du trodde du visste om Skåne. Maryhill Estate är nyöppnat, vackert och fyllt med själ. Här kombineras gårdshotell, vingårdskänsla och spa med panoramavyer över böljande landskap. Perfekt för den brud som älskar natur, elegans och en hint av Toscana i Skåne.<br><strong><a href="https://sv.hotels.com/ho537124/?chkin=2025-08-11&chkout=2025-08-13&x_pwa=1&rfrr=HSR&pwa_ts=1752488024829&referrerUrl=aHR0cHM6Ly9zdi5ob3RlbHMuY29tL0hvdGVsLVNlYXJjaA%3D%3D&useRewards=true&rm1=a2&regionId=6260315&destination=Glumsl%C3%B6v%2C+Sk%C3%A5nes+l%C3%A4n%2C+Sverige&destType=MARKET&selected=11799981&latLong=55.941698%2C12.810486&sort=RECOMMENDED&top_dp=9072&top_cur=SEK&userIntent=&selectedRoomType=325346169&selectedRatePlan=397772909&expediaPropertyId=11799981&searchId=b8c0b1a1-4897-4752-a4df-9ff05f22f189">Boka in mig nu till bästa priset</a></strong></p>
 
 
 
 <p><strong>Läs även:</strong> <a href="https://www.realtid.se/bors-finans/sakrar-brollopet-skanker-32-miljarder/"></a><a href="https://www.realtid.se/bors-finans/sakrar-brollopet-skanker-32-miljarder/">Säkrar bröllopet &#8211; skänker 32 miljarder</a><a href="https://www.realtid.se/bors-finans/unibet-avbrot-brollop-med-sportingbet/"></a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/de-5-basta-spahotellen-for-mohippan-2025/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/de-5-basta-spahotellen-for-mohippan-2025/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Revansch på Folkungagatan – Isabella Morrone tar tillbaka förlorad tid</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Thu, 10 Jul 2025 22:51:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-104-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekend möter kändiskocken Isabella Morrone som byter Österlen mot Södermalm och en intim italiensk bistrodröm. Det är en comeback snarare än en revansch. När Isabella Morrone öppnar eget på…</p>
+    <article class="mag-art ">
+      <h2 class="title">Revansch på Folkungagatan – Isabella Morrone tar tillbaka förlorad tid</h2>
+      <div class="byline">By Viggo Cavling · 10 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-104-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekend möter kändiskocken Isabella Morrone som byter Österlen mot Södermalm och en intim italiensk bistrodröm.</p>
 
 
@@ -2335,31 +2030,24 @@
 
 
 
-<p><strong>Rangordna tre saker som ger dig en perfekt helg:</strong>&lt;br>Ett bra italiensk vin. Gärna rött. Gärna Brunello eller Nebbiolo.</p>
+<p><strong>Rangordna tre saker som ger dig en perfekt helg:</strong><br>Ett bra italiensk vin. Gärna rött. Gärna Brunello eller Nebbiolo.</p>
 
 
 
-<p><strong>Namn:</strong> Isabella Morrone&lt;br><strong>Titel:</strong> Kock&lt;br><strong>Familj:</strong> Gift och två barn&lt;br><strong>Bor:</strong> Saltsjöbaden&lt;br><strong>Så tränar jag:</strong> Styrketräning och rider&lt;br><strong>Senaste resa:</strong> Mauritius&lt;br><strong>Nästa resa:</strong> Italien&lt;br><strong>Min drömresa:</strong> Sydafrika&lt;br><strong>Här shoppar jag alldeles för mycket:</strong> I bra matbutiker&lt;br><strong>Favoritrestaurang i Stockholm:</strong> Rolfs Hav, Chez Jolie, Babette (fastän det var länge sedan jag var där)&lt;br><strong>Detta vet vi inte om dig:</strong> Jag är en hästnörd. Men det tror jag kanske att många redan vet <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><strong>Namn:</strong> Isabella Morrone<br><strong>Titel:</strong> Kock<br><strong>Familj:</strong> Gift och två barn<br><strong>Bor:</strong> Saltsjöbaden<br><strong>Så tränar jag:</strong> Styrketräning och rider<br><strong>Senaste resa:</strong> Mauritius<br><strong>Nästa resa:</strong> Italien<br><strong>Min drömresa:</strong> Sydafrika<br><strong>Här shoppar jag alldeles för mycket:</strong> I bra matbutiker<br><strong>Favoritrestaurang i Stockholm:</strong> Rolfs Hav, Chez Jolie, Babette (fastän det var länge sedan jag var där)<br><strong>Detta vet vi inte om dig:</strong> Jag är en hästnörd. Men det tror jag kanske att många redan vet <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
 
 
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/restaurang/kan-slussen-sla-ut-stureplan-eller-drunknar-vi-i-krogstolar/">Nya Slussen riskerar att drunkna i tomma krogstolar</a> </p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/restaurang/revansch-pa-folkungagatan-isabella-morrone-tar-tillbaka-forlorad-tid/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/restaurang/revansch-pa-folkungagatan-isabella-morrone-tar-tillbaka-forlorad-tid/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Faje Gani vill bli Robin Hood för Sveriges krögare</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Thu, 10 Jul 2025 22:01:00 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-119-1024x512.png" alt="">
-    </figure>
-      <div class="body"><p>Perfect Weekend berättar historien om techentreprenören Faje Gani som ska rädda din lokala kvarterskrog – med billigare lån och bättre data. Från Nöjesguiden till techfinans för krögare För drygt tio…</p>
+    <article class="mag-art ">
+      <h2 class="title">Faje Gani vill bli Robin Hood för Sveriges krögare</h2>
+      <div class="byline">By Viggo Cavling · 10 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2025/07/2-119-1024x512.png" alt=""></figure>
+      <div class="body">
 <p>Perfect Weekend berättar historien om techentreprenören Faje Gani som ska rädda din lokala kvarterskrog – med billigare lån och bättre data.</p>
 
 
@@ -2444,23 +2132,16 @@
 
 
 
-<p><strong>Grundat:</strong> 2017&lt;br><strong>Antal kunder:</strong> Över 4 000 i fem länder&lt;br><strong>Tjänst:</strong> Kassasystem, betalningar och korta lån till restauranger&lt;br><strong>Planer:</strong> Omsätta 70 miljoner, fördubbla kreditramen och bli topp tre i Europa</p>
+<p><strong>Grundat:</strong> 2017<br><strong>Antal kunder:</strong> Över 4 000 i fem länder<br><strong>Tjänst:</strong> Kassasystem, betalningar och korta lån till restauranger<br><strong>Planer:</strong> Omsätta 70 miljoner, fördubbla kreditramen och bli topp tre i Europa</p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/restaurang/faje-gani-vill-bli-robin-hood-for-sveriges-krogare/" target="_blank" rel="noopener">Read original</a></div>
+      
+      <div class="orig"><a href="https://www.dagensps.se/weekend/restaurang/faje-gani-vill-bli-robin-hood-for-sveriges-krogare/" target="_blank" rel="noopener">Read original</a></div>
     </article>
-  
-
-    <article class="art">
-      <h2 class="hed hed-md">Frukostchock på Scandic – nu blir din hotellnatt dyrare</h2>
-      
-    <div class="meta">
-      <span class="by">By Viggo Cavling</span> · <time>Tue, 08 Jul 2025 15:07:21 +0000</time>
-    </div>
-      
-    <figure class="art-fig">
-      <img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2022/11/egg22-1024x683.jpg" alt="">
-    </figure>
-      <div class="body"><p>Flexibilitet.” Så beskriver hotellkedjan Scandic sitt nya drag: hotellfrukosten, denna heliga svenska hotellrutin, kommer inte längre att ingå per automatik. Perfect Weekends hotellexpert Viggo…</p>
+    <article class="mag-art ">
+      <h2 class="title">Frukostchock på Scandic – nu blir din hotellnatt dyrare</h2>
+      <div class="byline">By Viggo Cavling · 08 juli 2025</div>
+      <figure class="feature-img"><img src="https://dagensps.fra1.cdn.digitaloceanspaces.com/uploads/2022/11/egg22-1024x683.jpg" alt=""></figure>
+      <div class="body">
 <p>Flexibilitet.” Så beskriver hotellkedjan Scandic sitt nya drag: hotellfrukosten, denna heliga svenska hotellrutin, kommer inte längre att ingå per automatik. Perfect Weekends hotellexpert Viggo Cavling noterar att detta är en trend som kan sprida sig snabbare än man hinner vispa en äggröra.</p>
 
 
@@ -2535,13 +2216,10 @@
 
 <p><strong>Läs även:</strong> <a href="https://www.dagensps.se/weekend/efter-turisthatet-ny-yrkesgrupp-pa-drift-skapar-vrede-i-lokalsamhallen/">Efter turisthatet: Ny yrkesgrupp på drift skapar vrede i lokalsamhällen</a></p>
 </div>
-      <div class="cont"><a href="https://www.dagensps.se/weekend/resor/frukostchock-pa-scandic-nu-blir-din-hotellnatt-dyrare/" target="_blank" rel="noopener">Read original</a></div>
-    </article>
-  
-      </div>
       
-    </section>
-  
-  </main>
+      <div class="orig"><a href="https://www.dagensps.se/weekend/resor/frukostchock-pa-scandic-nu-blir-din-hotellnatt-dyrare/" target="_blank" rel="noopener">Read original</a></div>
+    </article>
+  </section>
+
 </body>
 </html>
